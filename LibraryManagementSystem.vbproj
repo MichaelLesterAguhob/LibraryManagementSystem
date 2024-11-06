@@ -162,6 +162,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorrowedBooks.Designer.vb">
+      <DependentUpon>BorrowedBooks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowedBooks.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="connection.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -174,6 +180,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -188,6 +195,9 @@
     <Compile Include="public_variables.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BorrowedBooks.resx">
+      <DependentUpon>BorrowedBooks.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

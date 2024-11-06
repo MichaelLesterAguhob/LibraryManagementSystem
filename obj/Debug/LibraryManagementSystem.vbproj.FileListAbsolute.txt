@@ -13,3 +13,4 @@ C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementS
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.xml
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
+C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.BorrowedBooks.resources

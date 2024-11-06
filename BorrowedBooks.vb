@@ -4,6 +4,15 @@ Imports MySql.Data.MySqlClient
 Public Class BorrowedBooks
 
     ReadOnly dtBorrowBooks As New DataTable()
+    Dim available As Boolean = False
+
+    Private mainForm As Form1
+
+    Public Sub New(mainForm As Form1)
+        InitializeComponent()
+        Me.mainForm = mainForm
+    End Sub
+
 
     Private Sub BorrowedBooks_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConOpen()
@@ -17,9 +26,9 @@ Public Class BorrowedBooks
         con.Close()
         Try
             con.Open()
-            Dim query As String = "SELECT borrowed_book.*, books.title 
+            Dim query As String = "SELECT borrowed_book.*, COALESCE(books.title, 'Deleted Book') as title 
                                    FROM borrowed_book 
-                                   INNER JOIN books 
+                                   LEFT JOIN books 
                                     ON books.book_id = borrowed_book.book_id
                                    WHERE status = 'Not returned' "
             Using cmd As New MySqlCommand(query, con)
@@ -53,12 +62,13 @@ Public Class BorrowedBooks
 
 
     Dim selectedBorrowedBook As String
-
+    Dim selectedBorrowedBookId As String
 
     Private Sub DgvBorrow_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvBorrow.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
             Dim i As Integer = DgvBorrow.CurrentRow.Index
             selectedBorrowedBook = DgvBorrow.Item(0, i).Value
+            selectedBorrowedBookId = DgvBorrow.Item(1, i).Value
             BtnReturned.Enabled = True
         End If
     End Sub
@@ -90,9 +100,9 @@ Public Class BorrowedBooks
         con.Close()
         Try
             con.Open()
-            Dim query As String = "SELECT borrowed_book.*, books.title
+            Dim query As String = "SELECT borrowed_book.*, COALESCE(books.title, 'Deleted Book') as title
                                    FROM borrowed_book 
-                                   INNER JOIN books 
+                                   LEFT JOIN books 
                                     ON books.book_id = borrowed_book.book_id
                                    WHERE status = 'Returned' "
             Using cmd As New MySqlCommand(query, con)
@@ -142,6 +152,8 @@ Public Class BorrowedBooks
                 cmd.Parameters.AddWithValue("@selectedBorrowedBook", selectedBorrowedBook)
                 cmd.ExecuteNonQuery()
             End Using
+            UpdateQnty(selectedBorrowedBookId)
+            mainForm.LoadBooks()
             LoadBorrowBooks()
             BtnReturned.Enabled = False
         Catch ex As Exception
@@ -152,4 +164,31 @@ Public Class BorrowedBooks
         End Try
     End Sub
 
+
+    Public Sub UpdateQnty(BookID)
+        con.Close()
+        Try
+            con.Open()
+            Dim query As String = "SELECT quantity FROM books WHERE book_id=@id"
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@id", BookID)
+                Dim count As Integer = Convert.ToInt64(cmd.ExecuteScalar())
+
+                count += 1
+
+
+                Dim query2 As String = "UPDATE books SET quantity=@newQnty WHERE book_id=@id"
+                Using cmd2 As New MySqlCommand(query2, con)
+                    cmd2.Parameters.AddWithValue("@id", BookID)
+                    cmd2.Parameters.AddWithValue("@newQnty", count)
+                    cmd2.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on updating book quantity", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+    End Sub
 End Class

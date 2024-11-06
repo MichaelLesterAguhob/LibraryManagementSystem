@@ -13,6 +13,8 @@ Public Class Form1
     Dim selectedBookAuthor As String = ""
     Dim selectedBookQnty As String = ""
 
+    Dim available As Boolean = False
+
     Public Sub generateUniqueBookId()
         randomNumbers = random.Next(1, 1000000)
 
@@ -26,7 +28,6 @@ Public Class Form1
                     generateUniqueBookId()
                 Else
                     UniqueID = dateNow.Year.ToString & randomNumbers
-                    MsgBox(UniqueID)
                 End If
             End Using
         Catch ex As Exception
@@ -50,7 +51,6 @@ Public Class Form1
                     generateUniqueBorrowId()
                 Else
                     UniqueID = dateNow.Year.ToString & randomNumbers
-                    MsgBox(UniqueID)
                 End If
             End Using
         Catch ex As Exception
@@ -62,9 +62,31 @@ Public Class Form1
     End Sub
 
 
+    Public Sub generateUniqueReserveId()
+        randomNumbers = random.Next(1, 1000000)
+
+        con.Open()
+        Try
+            Dim query As String = "SELECT reservation_id FROM book_reservation WHERE reservation_id=@id"
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@id", dateNow.Year.ToString & randomNumbers)
+                Dim count As Integer = Convert.ToInt64(cmd.ExecuteScalar())
+                If count > 0 Then
+                    generateUniqueReserveId()
+                Else
+                    UniqueID = dateNow.Year.ToString & randomNumbers
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on generating unique reservation id", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+    End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        LblTime.Text = TimeOfDay.ToString("h:mm:ss tt")
+        LblTime.Text = TimeOfDay.ToString("h:mm tt")
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -90,11 +112,11 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@qnty", TxtQuantity.Text.Trim)
                 cmd.ExecuteNonQuery()
             End Using
+            LoadBooks()
             MessageBox.Show("Successfully added book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             txtTitle.Clear()
             txtAuthor.Clear()
             TxtQuantity.Clear()
-            LoadBooks()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occurred on adding book", MessageBoxButtons.OK, MessageBoxIcon.Error)
             con.Close()
@@ -105,7 +127,7 @@ Public Class Form1
 
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
         If txtTitle.Text = "" Or txtAuthor.Text = "" Or Not IsNumeric(TxtQuantity.Text) Then
-            MessageBox.Show("Fill in the blanks | Quantity must be greater than or equal 1", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Fill in the blanks | Quantity must be greater than or equal 1", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
 
         End If
@@ -177,8 +199,16 @@ Public Class Form1
             BtnDel.Enabled = True
             BtnBorrow.Enabled = True
             Button3.Enabled = True
+            ReserveForm.Visible = False
+            BorrowForm.Enabled = False
+            TxtBorrowBookTitle.Clear()
+            TxtBorrowBookId.Clear()
+            TxtName.Clear()
+            TxtMobile.Clear()
+            EditForm.Height = 0
         End If
     End Sub
+
     Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
         EditForm.Height = 327
         txtEditId.Text = selectedBookId
@@ -216,15 +246,15 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@qnty", txtEditQnty.Text.Trim)
                 cmd.ExecuteNonQuery()
             End Using
+            EditForm.Height = 0
+            LoadBooks()
             MessageBox.Show("Successfully updated book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             txtEditTitle.Clear()
             txtEditAuthor.Clear()
             BtnDel.Enabled = False
             BtnEdit.Enabled = False
-            EditForm.Height = 0
+            Button3.Enabled = False
             BtnBorrow.Enabled = False
-            Button3.Enabled = True
-            LoadBooks()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occurred on updating book", MessageBoxButtons.OK, MessageBoxIcon.Error)
             con.Close()
@@ -245,15 +275,15 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@book_id", selectedBookId)
                 cmd.ExecuteNonQuery()
             End Using
+            LoadBooks()
             MessageBox.Show("Successfully updated book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             txtEditTitle.Clear()
             txtEditAuthor.Clear()
             BtnDel.Enabled = False
             BtnEdit.Enabled = False
-            EditForm.Visible = False
+            Button3.Enabled = False
+            EditForm.Height = 0
             BtnBorrow.Enabled = False
-            Button3.Enabled = True
-            LoadBooks()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occurred on updating book", MessageBoxButtons.OK, MessageBoxIcon.Error)
             con.Close()
@@ -277,6 +307,7 @@ Public Class Form1
         BorrowForm.Enabled = True
         TxtBorrowBookId.Text = selectedBookId
         TxtBorrowBookTitle.Text = selectedBookTitle
+        TxtName.Focus()
     End Sub
 
     Private Sub BtnCancelBorrow_Click(sender As Object, e As EventArgs) Handles BtnCancelBorrow.Click
@@ -286,6 +317,10 @@ Public Class Form1
 
     Public Sub BorrowBook()
         generateUniqueBorrowId()
+        UpdateQnty(TxtBorrowBookId.Text.Trim)
+        If Not available Then
+            Return
+        End If
         con.Close()
         Try
             con.Open()
@@ -305,12 +340,19 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@date_to_return", DtpDateReturn.Text.Trim)
                 cmd.ExecuteNonQuery()
             End Using
+
+            LoadBooks()
             MessageBox.Show("Successfully borrow book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             TxtBorrowBookTitle.Clear()
             TxtBorrowBookId.Clear()
             TxtName.Clear()
             TxtMobile.Clear()
             BorrowForm.Enabled = False
+            BtnDel.Enabled = False
+            BtnEdit.Enabled = False
+            EditForm.Height = 0
+            Button3.Enabled = False
+            BtnBorrow.Enabled = False
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occurred on borrowing book", MessageBoxButtons.OK, MessageBoxIcon.Error)
             con.Close()
@@ -325,7 +367,7 @@ Public Class Form1
     End Sub
 
     Private Sub ViewBorrowedBooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewBorrowedBooksToolStripMenuItem.Click
-        Dim borrowedBooks As New BorrowedBooks
+        Dim borrowedBooks As New BorrowedBooks(Me)
         borrowedBooks.Show()
 
     End Sub
@@ -347,41 +389,37 @@ Public Class Form1
             reserveView = True
             BtnDel.Enabled = False
             BtnEdit.Enabled = False
-            EditForm.Visible = False
+            EditForm.Height = 0
             Button3.Enabled = False
             BtnBorrow.Enabled = False
+            LoadReservedBooks()
         Else
             reserveView = False
             DgvReserve.Visible = False
             Button1.Text = "VIEW RESERVED"
             BtnDel.Enabled = True
             BtnEdit.Enabled = True
-            EditForm.Visible = True
+            EditForm.Height = 0
             Button3.Enabled = True
             BtnBorrow.Enabled = True
         End If
     End Sub
 
-    Dim reserveFormView As Boolean = False
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If Not reserveFormView Then
-            reserveFormView = True
-            ReserveForm.Visible = True
-            BtnDel.Enabled = False
+
+        TxtReserveBookId.Text = selectedBookId
+        TxtReserveBookTitle.Text = selectedBookTitle
+        BtnDel.Enabled = False
             BtnEdit.Enabled = False
-            EditForm.Height = 0
             BtnBorrow.Enabled = False
-        Else
-            reserveFormView = False
-            ReserveForm.Visible = False
-            BtnDel.Enabled = True
-            BtnEdit.Enabled = True
-            BtnBorrow.Enabled = True
-        End If
+            EditForm.Height = 0
+            ReserveForm.Visible = True
+            TxtReserveName.Focus()
+
     End Sub
 
     Private Sub BtnCancelReserve_Click(sender As Object, e As EventArgs) Handles BtnCancelReserve.Click
-        reserveFormView = False
         ReserveForm.Visible = False
         BtnDel.Enabled = True
         BtnEdit.Enabled = True
@@ -389,9 +427,133 @@ Public Class Form1
     End Sub
 
     Private Sub BtnSaveReserve_Click(sender As Object, e As EventArgs) Handles BtnSaveReserve.Click
-        reserveFormView = False
-        ReserveForm.Visible = False
+        If TxtReserveBookId.Text = "" Or TxtReserveBookTitle.Text = "" Or Not IsNumeric(TxtReserveMobile.Text) Then
+            MessageBox.Show("Fill in the blanks | Quantity must be greater than or equal 1", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        SaveReservation()
     End Sub
 
 
+    Public Sub SaveReservation()
+        generateUniqueReserveId()
+        UpdateQnty(TxtReserveBookId.Text.Trim)
+        If Not available Then
+            Return
+        End If
+        con.Close()
+        Try
+            con.Open()
+            Dim query As String = "INSERT INTO 
+                        book_reservation
+                            (`reservation_id`,`book_id`,`name`,`mobile`,`date_reserved`, `pickup_date`) 
+                        VALUES
+                            (@reservation_id, @book_id, @name, @mobile, @date_reserved, @pickup_date)"
+
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@reservation_id", UniqueID.ToString())
+                cmd.Parameters.AddWithValue("@book_id", TxtReserveBookId.Text.Trim)
+                cmd.Parameters.AddWithValue("@name", TxtReserveName.Text.Trim)
+                cmd.Parameters.AddWithValue("@mobile", TxtReserveMobile.Text.Trim)
+                cmd.Parameters.AddWithValue("@date_reserved", LblDate.Text.Trim)
+                cmd.Parameters.AddWithValue("@pickup_date", DtpPickupDate.Text.Trim)
+                cmd.ExecuteNonQuery()
+            End Using
+            UpdateQnty(TxtReserveBookId.Text.Trim)
+            LoadBooks()
+            LoadReservedBooks()
+            MessageBox.Show("Successfully reserved book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            TxtReserveBookId.Clear()
+            TxtReserveBookTitle.Clear()
+            TxtReserveName.Clear()
+            TxtReserveMobile.Clear()
+            ReserveForm.Visible = False
+            BtnDel.Enabled = False
+            BtnEdit.Enabled = False
+            EditForm.Height = 0
+            Button3.Enabled = False
+            BtnBorrow.Enabled = False
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on borrowing book", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+
+    ReadOnly dtReservedBooks As New DataTable()
+    Public Sub LoadReservedBooks()
+
+        con.Close()
+        Try
+            con.Open()
+            Dim query As String = "SELECT book_reservation.*, books.title 
+                                    FROM book_reservation 
+                                    INNER JOIN books
+                                        ON books.book_id = book_reservation.book_id
+                                    "
+            Using cmd As New MySqlCommand(query, con)
+                Using adptr As New MySqlDataAdapter(cmd)
+                    dtReservedBooks.Clear()
+                    adptr.Fill(dtReservedBooks)
+
+                    If dtReservedBooks.Rows.Count > 0 Then
+                        DgvReserve.DataSource = dtReservedBooks
+                        DgvReserve.Refresh()
+                        For i = 0 To DgvReserve.Rows.Count - 1
+                            DgvReserve.Rows(i).Height = 50
+                        Next
+                        DgvReserve.ClearSelection()
+                    Else
+                        DgvReserve.DataSource = dtReservedBooks
+                        DgvReserve.Refresh()
+                    End If
+
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on while loading list of books", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+
+    End Sub
+
+
+
+    Public Sub UpdateQnty(BookID)
+        con.Close()
+        Try
+            con.Open()
+            Dim query As String = "SELECT quantity FROM books WHERE book_id=@id"
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@id", BookID)
+                Dim count As Integer = Convert.ToInt64(cmd.ExecuteScalar())
+                If count >= 1 Then
+                    count -= 1
+                    available = True
+                Else
+                    MessageBox.Show("Book is Unavailable for borrowing or reservation. No copies left", "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    available = False
+                    Return
+                End If
+
+                Dim query2 As String = "UPDATE books SET quantity=@newQnty WHERE book_id=@id"
+                Using cmd2 As New MySqlCommand(query2, con)
+                    cmd2.Parameters.AddWithValue("@id", BookID)
+                    cmd2.Parameters.AddWithValue("@newQnty", count)
+                    cmd2.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on updating book quantity", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+    End Sub
 End Class

@@ -33,10 +33,15 @@ Partial Class Form1
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BooksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewBooksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewBorrowedBooksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.dgvBooks = New System.Windows.Forms.DataGridView()
+        Me.book_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.title = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.author = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AddBookForm = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.TxtQuantity = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BtnCancel = New System.Windows.Forms.Button()
         Me.BtnAdd = New System.Windows.Forms.Button()
@@ -47,6 +52,8 @@ Partial Class Form1
         Me.BtnDel = New System.Windows.Forms.Button()
         Me.BtnEdit = New System.Windows.Forms.Button()
         Me.EditForm = New System.Windows.Forms.GroupBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtEditQnty = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtEditId = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -79,8 +86,6 @@ Partial Class Form1
         Me.BtnBorrow = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TxtQuantity = New System.Windows.Forms.TextBox()
         Me.ReserveForm = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.DtpPickupDate = New System.Windows.Forms.DateTimePicker()
@@ -99,8 +104,6 @@ Partial Class Form1
         Me.Label26 = New System.Windows.Forms.Label()
         Me.TxtReserveBookTitle = New System.Windows.Forms.TextBox()
         Me.DgvReserve = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -109,12 +112,8 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.txtEditQnty = New System.Windows.Forms.TextBox()
-        Me.book_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.title = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.author = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgvBooks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AddBookForm.SuspendLayout()
@@ -151,16 +150,10 @@ Partial Class Form1
         '
         'BooksToolStripMenuItem
         '
-        Me.BooksToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewBooksToolStripMenuItem, Me.ViewBorrowedBooksToolStripMenuItem})
+        Me.BooksToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewBorrowedBooksToolStripMenuItem})
         Me.BooksToolStripMenuItem.Name = "BooksToolStripMenuItem"
         Me.BooksToolStripMenuItem.Size = New System.Drawing.Size(64, 38)
         Me.BooksToolStripMenuItem.Text = "Books"
-        '
-        'ViewBooksToolStripMenuItem
-        '
-        Me.ViewBooksToolStripMenuItem.Name = "ViewBooksToolStripMenuItem"
-        Me.ViewBooksToolStripMenuItem.Size = New System.Drawing.Size(232, 26)
-        Me.ViewBooksToolStripMenuItem.Text = "Reservation"
         '
         'ViewBorrowedBooksToolStripMenuItem
         '
@@ -180,6 +173,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBooks.BackgroundColor = System.Drawing.Color.LightSkyBlue
+        Me.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -201,6 +195,39 @@ Partial Class Form1
         Me.dgvBooks.Size = New System.Drawing.Size(880, 627)
         Me.dgvBooks.TabIndex = 1
         '
+        'book_id
+        '
+        Me.book_id.DataPropertyName = "book_id"
+        Me.book_id.FillWeight = 99.49239!
+        Me.book_id.HeaderText = "BookID"
+        Me.book_id.Name = "book_id"
+        Me.book_id.ReadOnly = True
+        '
+        'title
+        '
+        Me.title.DataPropertyName = "title"
+        Me.title.FillWeight = 99.49239!
+        Me.title.HeaderText = "TITLE"
+        Me.title.Name = "title"
+        Me.title.ReadOnly = True
+        '
+        'author
+        '
+        Me.author.DataPropertyName = "author"
+        Me.author.FillWeight = 99.49239!
+        Me.author.HeaderText = "AUTHOR"
+        Me.author.Name = "author"
+        Me.author.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column6.DataPropertyName = "quantity"
+        Me.Column6.FillWeight = 101.5228!
+        Me.Column6.HeaderText = "QUANTITY"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
         'AddBookForm
         '
         Me.AddBookForm.BackColor = System.Drawing.Color.SteelBlue
@@ -218,6 +245,23 @@ Partial Class Form1
         Me.AddBookForm.Size = New System.Drawing.Size(440, 239)
         Me.AddBookForm.TabIndex = 2
         Me.AddBookForm.TabStop = False
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(27, 172)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(35, 13)
+        Me.Label17.TabIndex = 8
+        Me.Label17.Text = "Qnty :"
+        '
+        'TxtQuantity
+        '
+        Me.TxtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtQuantity.Location = New System.Drawing.Point(68, 166)
+        Me.TxtQuantity.Name = "TxtQuantity"
+        Me.TxtQuantity.Size = New System.Drawing.Size(74, 26)
+        Me.TxtQuantity.TabIndex = 7
         '
         'Label3
         '
@@ -328,6 +372,23 @@ Partial Class Form1
         Me.EditForm.TabIndex = 7
         Me.EditForm.TabStop = False
         '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(50, 220)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(43, 13)
+        Me.Label27.TabIndex = 10
+        Me.Label27.Text = "QNTY :"
+        '
+        'txtEditQnty
+        '
+        Me.txtEditQnty.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEditQnty.Location = New System.Drawing.Point(53, 236)
+        Me.txtEditQnty.Name = "txtEditQnty"
+        Me.txtEditQnty.Size = New System.Drawing.Size(100, 26)
+        Me.txtEditQnty.TabIndex = 9
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -358,6 +419,7 @@ Partial Class Form1
         '
         'BtnCancelEditing
         '
+        Me.BtnCancelEditing.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnCancelEditing.Location = New System.Drawing.Point(470, 248)
         Me.BtnCancelEditing.Name = "BtnCancelEditing"
         Me.BtnCancelEditing.Size = New System.Drawing.Size(75, 23)
@@ -367,6 +429,7 @@ Partial Class Form1
         '
         'BtnUpdate
         '
+        Me.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnUpdate.Location = New System.Drawing.Point(378, 248)
         Me.BtnUpdate.Name = "BtnUpdate"
         Me.BtnUpdate.Size = New System.Drawing.Size(75, 23)
@@ -428,7 +491,7 @@ Partial Class Form1
         Me.LblTime.AutoSize = True
         Me.LblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTime.ForeColor = System.Drawing.Color.Navy
-        Me.LblTime.Location = New System.Drawing.Point(340, 55)
+        Me.LblTime.Location = New System.Drawing.Point(364, 55)
         Me.LblTime.Name = "LblTime"
         Me.LblTime.Size = New System.Drawing.Size(47, 20)
         Me.LblTime.TabIndex = 10
@@ -633,26 +696,9 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(199, 22)
         Me.TextBox1.TabIndex = 12
         '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(27, 172)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(35, 13)
-        Me.Label17.TabIndex = 8
-        Me.Label17.Text = "Qnty :"
-        '
-        'TxtQuantity
-        '
-        Me.TxtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtQuantity.Location = New System.Drawing.Point(68, 166)
-        Me.TxtQuantity.Name = "TxtQuantity"
-        Me.TxtQuantity.Size = New System.Drawing.Size(74, 26)
-        Me.TxtQuantity.TabIndex = 7
-        '
         'ReserveForm
         '
-        Me.ReserveForm.BackColor = System.Drawing.Color.CadetBlue
+        Me.ReserveForm.BackColor = System.Drawing.Color.CornflowerBlue
         Me.ReserveForm.Controls.Add(Me.Label18)
         Me.ReserveForm.Controls.Add(Me.DtpPickupDate)
         Me.ReserveForm.Controls.Add(Me.Label19)
@@ -767,7 +813,7 @@ Partial Class Form1
         'BtnCancelReserve
         '
         Me.BtnCancelReserve.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnCancelReserve.Location = New System.Drawing.Point(340, 328)
+        Me.BtnCancelReserve.Location = New System.Drawing.Point(340, 331)
         Me.BtnCancelReserve.Name = "BtnCancelReserve"
         Me.BtnCancelReserve.Size = New System.Drawing.Size(75, 23)
         Me.BtnCancelReserve.TabIndex = 5
@@ -777,7 +823,7 @@ Partial Class Form1
         'BtnSaveReserve
         '
         Me.BtnSaveReserve.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnSaveReserve.Location = New System.Drawing.Point(248, 328)
+        Me.BtnSaveReserve.Location = New System.Drawing.Point(248, 331)
         Me.BtnSaveReserve.Name = "BtnSaveReserve"
         Me.BtnSaveReserve.Size = New System.Drawing.Size(75, 23)
         Me.BtnSaveReserve.TabIndex = 4
@@ -829,7 +875,8 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvReserve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvReserve.BackgroundColor = System.Drawing.Color.LightSkyBlue
+        Me.DgvReserve.BackgroundColor = System.Drawing.Color.LightBlue
+        Me.DgvReserve.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -851,29 +898,6 @@ Partial Class Form1
         Me.DgvReserve.Size = New System.Drawing.Size(1326, 627)
         Me.DgvReserve.TabIndex = 14
         Me.DgvReserve.Visible = False
-        '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Location = New System.Drawing.Point(1232, 54)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(106, 23)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "VIEW RESERVE"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button3.Enabled = False
-        Me.Button3.Location = New System.Drawing.Point(1094, 54)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(132, 23)
-        Me.Button3.TabIndex = 15
-        Me.Button3.Text = "MAKE RESERVATION"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -931,55 +955,28 @@ Partial Class Form1
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
-        'Label27
+        'Button1
         '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(50, 220)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(43, 13)
-        Me.Label27.TabIndex = 10
-        Me.Label27.Text = "QNTY :"
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Location = New System.Drawing.Point(1232, 54)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(106, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "VIEW RESERVE"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'txtEditQnty
+        'Button3
         '
-        Me.txtEditQnty.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEditQnty.Location = New System.Drawing.Point(53, 236)
-        Me.txtEditQnty.Name = "txtEditQnty"
-        Me.txtEditQnty.Size = New System.Drawing.Size(100, 26)
-        Me.txtEditQnty.TabIndex = 9
-        '
-        'book_id
-        '
-        Me.book_id.DataPropertyName = "book_id"
-        Me.book_id.FillWeight = 99.49239!
-        Me.book_id.HeaderText = "BookID"
-        Me.book_id.Name = "book_id"
-        Me.book_id.ReadOnly = True
-        '
-        'title
-        '
-        Me.title.DataPropertyName = "title"
-        Me.title.FillWeight = 99.49239!
-        Me.title.HeaderText = "TITLE"
-        Me.title.Name = "title"
-        Me.title.ReadOnly = True
-        '
-        'author
-        '
-        Me.author.DataPropertyName = "author"
-        Me.author.FillWeight = 99.49239!
-        Me.author.HeaderText = "AUTHOR"
-        Me.author.Name = "author"
-        Me.author.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column6.DataPropertyName = "quantity"
-        Me.Column6.FillWeight = 101.5228!
-        Me.Column6.HeaderText = "QUANTITY"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button3.Enabled = False
+        Me.Button3.Location = New System.Drawing.Point(1094, 54)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(132, 23)
+        Me.Button3.TabIndex = 15
+        Me.Button3.Text = "MAKE RESERVATION"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -1029,7 +1026,6 @@ Partial Class Form1
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BooksToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewBorrowedBooksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents dgvBooks As DataGridView
     Friend WithEvents AddBookForm As GroupBox

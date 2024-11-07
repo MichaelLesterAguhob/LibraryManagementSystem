@@ -220,5 +220,71 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-check-30 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-211.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-text-file-21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-exit-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-logout-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-today-85 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-update-28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-books-emoji-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-book-shelf-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eye-44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-today-85 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-books-28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-create-44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-management-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-create-441.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-x-10.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

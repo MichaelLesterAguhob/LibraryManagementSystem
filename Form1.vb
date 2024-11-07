@@ -154,7 +154,7 @@ Public Class Form1
         con.Close()
         Try
             con.Open()
-            Dim query As String = "SELECT * FROM books ORDER BY title ASC"
+            Dim query As String = "SELECT * FROM books ORDER BY num_cnt DESC"
             Using cmd As New MySqlCommand(query, con)
                 Using adptr As New MySqlDataAdapter(cmd)
                     dtBooks.Clear()
@@ -191,10 +191,10 @@ Public Class Form1
     Private Sub dgvBooks_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBooks.CellClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
             Dim i As Integer = dgvBooks.CurrentRow.Index
-            selectedBookId = dgvBooks.Item(0, i).Value
-            selectedBookTitle = dgvBooks.Item(1, i).Value
-            selectedBookAuthor = dgvBooks.Item(2, i).Value
-            selectedBookQnty = dgvBooks.Item(3, i).Value
+            selectedBookId = dgvBooks.Item(1, i).Value
+            selectedBookTitle = dgvBooks.Item(2, i).Value
+            selectedBookAuthor = dgvBooks.Item(3, i).Value
+            selectedBookQnty = dgvBooks.Item(4, i).Value
             BtnEdit.Enabled = True
             BtnDel.Enabled = True
             BtnBorrow.Enabled = True
@@ -363,6 +363,15 @@ Public Class Form1
 
 
     Private Sub BtnBorrowSave_Click(sender As Object, e As EventArgs) Handles BtnBorrowSave.Click
+        If TxtBorrowBookId.Text = "" Or TxtBorrowBookTitle.Text = "" Or TxtName.Text = "" Or Not IsNumeric(TxtMobile.Text) Then
+            MessageBox.Show("Fill in the blanks", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If TxtMobile.Text.Length <> 11 Then
+            MessageBox.Show("Mobile No. must be 11-digit", "Invalid Mobile No.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         BorrowBook()
     End Sub
 
@@ -386,22 +395,26 @@ Public Class Form1
         If Not reserveView Then
             Button1.Text = "HIDE RESERVED"
             DgvReserve.Visible = True
+            Panel1.Visible = True
             reserveView = True
             BtnDel.Enabled = False
             BtnEdit.Enabled = False
             EditForm.Height = 0
             Button3.Enabled = False
             BtnBorrow.Enabled = False
-            LoadReservedBooks()
+            BtnSearch.Enabled = False
+            LoadReservedBooks("reserved")
         Else
             reserveView = False
             DgvReserve.Visible = False
+            Panel1.Visible = False
             Button1.Text = "VIEW RESERVED"
             BtnDel.Enabled = True
             BtnEdit.Enabled = True
             EditForm.Height = 0
             Button3.Enabled = True
             BtnBorrow.Enabled = True
+            BtnSearch.Enabled = True
         End If
     End Sub
 
@@ -429,6 +442,11 @@ Public Class Form1
     Private Sub BtnSaveReserve_Click(sender As Object, e As EventArgs) Handles BtnSaveReserve.Click
         If TxtReserveBookId.Text = "" Or TxtReserveBookTitle.Text = "" Or Not IsNumeric(TxtReserveMobile.Text) Then
             MessageBox.Show("Fill in the blanks | Quantity must be greater than or equal 1", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If TxtReserveMobile.Text.Length <> 11 Then
+            MessageBox.Show("Mobile No. must be 11-digit", "Invalid Mobile No.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -460,9 +478,8 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@pickup_date", DtpPickupDate.Text.Trim)
                 cmd.ExecuteNonQuery()
             End Using
-            UpdateQnty(TxtReserveBookId.Text.Trim)
             LoadBooks()
-            LoadReservedBooks()
+            LoadReservedBooks("reserved")
             MessageBox.Show("Successfully reserved book", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             TxtReserveBookId.Clear()
             TxtReserveBookTitle.Clear()
@@ -484,17 +501,20 @@ Public Class Form1
 
 
     ReadOnly dtReservedBooks As New DataTable()
-    Public Sub LoadReservedBooks()
+    Public Sub LoadReservedBooks(status)
 
         con.Close()
         Try
             con.Open()
-            Dim query As String = "SELECT book_reservation.*, books.title 
+            Dim query As String = "SELECT book_reservation.*, COALESCE(books.title, 'Deleted Book') as title
                                     FROM book_reservation 
-                                    INNER JOIN books
+                                    LEFT JOIN books
                                         ON books.book_id = book_reservation.book_id
+                                    WHERE status = @status
+                                    ORDER BY num_cnt DESC
                                     "
             Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@status", status)
                 Using adptr As New MySqlDataAdapter(cmd)
                     dtReservedBooks.Clear()
                     adptr.Fill(dtReservedBooks)
@@ -551,6 +571,229 @@ Public Class Form1
             End Using
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occurred on updating book quantity", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            con.Close()
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Private Sub BtnSearch_Click(sender As Object, e As EventArgs) Handles BtnSearch.Click
+        If TxtSearch.Text <> "" Then
+            con.Close()
+            Try
+                con.Open()
+                Dim query As String = "SELECT * FROM books WHERE title LIKE @toSearch OR author LIKE @toSearch OR book_id LIKE @toSearch ORDER BY num_cnt DESC"
+                Using cmd As New MySqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@toSearch", "%" & TxtSearch.Text.Trim & "%")
+                    Using adptr As New MySqlDataAdapter(cmd)
+                        dtBooks.Clear()
+                        adptr.Fill(dtBooks)
+
+                        If dtBooks.Rows.Count > 0 Then
+                            dgvBooks.DataSource = dtBooks
+                            dgvBooks.Refresh()
+                            For i = 0 To dgvBooks.Rows.Count - 1
+                                dgvBooks.Rows(i).Height = 50
+                            Next
+                            dgvBooks.ClearSelection()
+                        Else
+                            dgvBooks.DataSource = dtBooks
+                            dgvBooks.Refresh()
+                        End If
+
+                    End Using
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error Occurred on while loading list of books", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                con.Close()
+            Finally
+                con.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub TxtSearch_Leave(sender As Object, e As EventArgs) Handles TxtSearch.Leave
+        If TxtSearch.Text = "" Then
+            LoadBooks()
+        End If
+    End Sub
+
+    Private Sub TxtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtSearch.KeyDown
+        If TxtSearch.Text <> "" Then
+            If e.KeyCode = 13 Then
+                BtnSearch.PerformClick()
+
+            End If
+        End If
+    End Sub
+
+    Private Sub TxtSearch_TextChanged(sender As Object, e As EventArgs) Handles TxtSearch.TextChanged
+        If TxtSearch.Text = "" Then
+            LoadBooks()
+        End If
+    End Sub
+
+    Private Sub clearSearch_Click(sender As Object, e As EventArgs) Handles clearSearch.Click
+        TxtSearch.Clear()
+    End Sub
+
+
+    '==============================================================================================================
+    Dim selectedReservedId As String
+    Dim selectedReservedBookId As String
+    Dim selectedReservedName As String
+    Dim selectedReservedMobile As String
+    Private Sub DgvReserve_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvReserve.CellClick
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim i As Integer = DgvReserve.CurrentRow.Index
+            selectedReservedId = DgvReserve.Item(1, i).Value
+            selectedReservedBookId = DgvReserve.Item(2, i).Value
+            selectedReservedName = DgvReserve.Item(3, i).Value
+            selectedReservedMobile = DgvReserve.Item(4, i).Value
+
+            If DgvReserve.Item(7, i).Value = "reserved" Then
+                BtnFulfilled.Enabled = True
+                BtnCancelReservation.Enabled = True
+            Else
+                BtnFulfilled.Enabled = False
+                BtnCancelReservation.Enabled = False
+            End If
+        End If
+    End Sub
+
+    Private Sub BtnViewReserved_Click(sender As Object, e As EventArgs) Handles BtnViewReserved.Click
+        BtnFulfilled.Enabled = False
+        BtnCancelReservation.Enabled = False
+        LoadReservedBooks("reserved")
+    End Sub
+
+    Private Sub BtnViewFulfilled_Click(sender As Object, e As EventArgs) Handles BtnViewFulfilled.Click
+        BtnFulfilled.Enabled = False
+        BtnCancelReservation.Enabled = False
+        LoadReservedBooks("fulfilled")
+    End Sub
+
+    Private Sub BtnViewCancelled_Click(sender As Object, e As EventArgs) Handles BtnViewCancelled.Click
+        BtnFulfilled.Enabled = False
+        BtnCancelReservation.Enabled = False
+        LoadReservedBooks("cancelled")
+    End Sub
+
+
+    Private Sub BtnFulfilled_Click(sender As Object, e As EventArgs) Handles BtnFulfilled.Click
+        'MsgBox(selectedReservedBookId & " " & selectedReservedId)
+        Panel2.Visible = True
+        BtnCancelReservation.Enabled = False
+    End Sub
+
+    Private Sub BtnCancelReservation_Click(sender As Object, e As EventArgs) Handles BtnCancelReservation.Click
+        'MsgBox(selectedReservedBookId & " " & selectedReservedId)
+        Dim confirm As DialogResult = MessageBox.Show("Are you sure to cancel this reservation?", "Please Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If confirm = DialogResult.Yes Then
+            con.Close()
+            Try
+                con.Open()
+                Dim query As String = "UPDATE book_reservation 
+                                SET 
+                                    status='cancelled'
+                                WHERE reservation_id = @reservation_id"
+
+                Using cmd As New MySqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@reservation_id", selectedReservedId)
+                    cmd.ExecuteNonQuery()
+                End Using
+
+                con.Close()
+                Try
+                    con.Open()
+                    Dim query2 As String = "SELECT quantity FROM books WHERE book_id=@id"
+                    Using cmd2 As New MySqlCommand(query2, con)
+                        cmd2.Parameters.AddWithValue("@id", selectedReservedBookId)
+                        Dim count As Integer = Convert.ToInt64(cmd2.ExecuteScalar())
+
+                        count += 1
+
+
+                        Dim query3 As String = "UPDATE books SET quantity=@newQnty WHERE book_id=@id"
+                        Using cmd3 As New MySqlCommand(query3, con)
+                            cmd3.Parameters.AddWithValue("@id", selectedReservedBookId)
+                            cmd3.Parameters.AddWithValue("@newQnty", count)
+                            cmd3.ExecuteNonQuery()
+                        End Using
+                    End Using
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Error Occurred on updating book quantity", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    con.Close()
+                Finally
+                    con.Close()
+                End Try
+
+                MessageBox.Show("Cancelled Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadBooks()
+                LoadReservedBooks("cancelled")
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error Occurred on updating reservation status", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                con.Close()
+            Finally
+                con.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub BtnCancelFulfill_Click(sender As Object, e As EventArgs) Handles BtnCancelFulfill.Click
+        Panel2.Visible = False
+        BtnFulfilled.Enabled = False
+        BtnCancelReservation.Enabled = False
+    End Sub
+
+    Private Sub BtnConfirmFulfill_Click(sender As Object, e As EventArgs) Handles BtnConfirmFulfill.Click
+        generateUniqueBorrowId()
+
+        con.Close()
+        Try
+            con.Open()
+            Dim query As String = "INSERT INTO 
+                        borrowed_book
+                            (`borrow_id`,`book_id`,`borrower_name`,`borrower_mobile`,`date_borrow`, `time_borrow`, `date_to_return`) 
+                        VALUES
+                            (@borrow_id, @book_id, @borrower_name, @borrower_mobile, @date_borrow, @time_borrow, @date_to_return)"
+
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@borrow_id", UniqueID.ToString())
+                cmd.Parameters.AddWithValue("@book_id", selectedReservedBookId)
+                cmd.Parameters.AddWithValue("@borrower_name", selectedReservedName)
+                cmd.Parameters.AddWithValue("@borrower_mobile", selectedReservedMobile)
+                cmd.Parameters.AddWithValue("@date_borrow", LblDate.Text.Trim)
+                cmd.Parameters.AddWithValue("@time_borrow", LblTime.Text.Trim)
+                cmd.Parameters.AddWithValue("@date_to_return", DtpReservedToReturnDate.Text.Trim)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            con.Close()
+            Try
+                con.Open()
+                Dim query2 As String = "UPDATE book_reservation 
+                                SET 
+                                    status='fulfilled'
+                                WHERE reservation_id = @reservation_id"
+
+                Using cmd As New MySqlCommand(query2, con)
+                    cmd.Parameters.AddWithValue("@reservation_id", selectedReservedId)
+                    cmd.ExecuteNonQuery()
+                End Using
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error Occurred on updating reservation status", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                con.Close()
+            Finally
+                con.Close()
+            End Try
+
+            Panel2.Visible = False
+            MessageBox.Show("Successfully fulfilled reservation", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LoadReservedBooks("fulfilled")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occurred on fulfilling reservation of book", MessageBoxButtons.OK, MessageBoxIcon.Error)
             con.Close()
         Finally
             con.Close()

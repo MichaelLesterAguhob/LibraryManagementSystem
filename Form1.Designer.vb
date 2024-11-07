@@ -39,6 +39,7 @@ Partial Class Form1
         Me.title = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.author = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AddBookForm = New System.Windows.Forms.GroupBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TxtQuantity = New System.Windows.Forms.TextBox()
@@ -49,14 +50,12 @@ Partial Class Form1
         Me.txtAuthor = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtTitle = New System.Windows.Forms.TextBox()
-        Me.BtnDel = New System.Windows.Forms.Button()
-        Me.BtnEdit = New System.Windows.Forms.Button()
         Me.EditForm = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.txtEditQnty = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtEditId = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.BtnCancelEditing = New System.Windows.Forms.Button()
         Me.BtnUpdate = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -67,6 +66,7 @@ Partial Class Form1
         Me.LblDate = New System.Windows.Forms.Label()
         Me.LblTime = New System.Windows.Forms.Label()
         Me.BorrowForm = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.DtpDateReturn = New System.Windows.Forms.DateTimePicker()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -76,17 +76,15 @@ Partial Class Form1
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxtBorrowBookId = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.BtnCancelBorrow = New System.Windows.Forms.Button()
         Me.BtnBorrowSave = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TxtName = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtBorrowBookTitle = New System.Windows.Forms.TextBox()
-        Me.BtnBorrow = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TxtSearch = New System.Windows.Forms.TextBox()
         Me.ReserveForm = New System.Windows.Forms.GroupBox()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.DtpPickupDate = New System.Windows.Forms.DateTimePicker()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -96,7 +94,6 @@ Partial Class Form1
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TxtReserveBookId = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
         Me.BtnCancelReserve = New System.Windows.Forms.Button()
         Me.BtnSaveReserve = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -112,8 +109,27 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.BtnSearch = New System.Windows.Forms.Button()
+        Me.BtnBorrow = New System.Windows.Forms.Button()
+        Me.BtnEdit = New System.Windows.Forms.Button()
+        Me.BtnDel = New System.Windows.Forms.Button()
+        Me.clearSearch = New System.Windows.Forms.Button()
+        Me.BtnCancelReservation = New System.Windows.Forms.Button()
+        Me.BtnFulfilled = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.BtnViewFulfilled = New System.Windows.Forms.Button()
+        Me.BtnViewCancelled = New System.Windows.Forms.Button()
+        Me.BtnViewReserved = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.DtpReservedToReturnDate = New System.Windows.Forms.DateTimePicker()
+        Me.BtnCancelFulfill = New System.Windows.Forms.Button()
+        Me.BtnConfirmFulfill = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgvBooks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AddBookForm.SuspendLayout()
@@ -121,12 +137,14 @@ Partial Class Form1
         Me.BorrowForm.SuspendLayout()
         Me.ReserveForm.SuspendLayout()
         CType(Me.DgvReserve, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
         Me.MenuStrip1.AutoSize = False
-        Me.MenuStrip1.BackColor = System.Drawing.Color.SteelBlue
+        Me.MenuStrip1.BackColor = System.Drawing.Color.RoyalBlue
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.BooksToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -144,8 +162,9 @@ Partial Class Form1
         '
         'ExitToolStripMenuItem
         '
+        Me.ExitToolStripMenuItem.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_logout_20
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(104, 26)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'BooksToolStripMenuItem
@@ -157,6 +176,7 @@ Partial Class Form1
         '
         'ViewBorrowedBooksToolStripMenuItem
         '
+        Me.ViewBorrowedBooksToolStripMenuItem.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_books_emoji_20
         Me.ViewBorrowedBooksToolStripMenuItem.Name = "ViewBorrowedBooksToolStripMenuItem"
         Me.ViewBorrowedBooksToolStripMenuItem.Size = New System.Drawing.Size(232, 26)
         Me.ViewBorrowedBooksToolStripMenuItem.Text = "View Borrowed Books"
@@ -166,13 +186,12 @@ Partial Class Form1
         Me.dgvBooks.AllowUserToAddRows = False
         Me.dgvBooks.AllowUserToDeleteRows = False
         Me.dgvBooks.AllowUserToResizeColumns = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.dgvBooks.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvBooks.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.dgvBooks.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvBooks.BackgroundColor = System.Drawing.Color.LightSkyBlue
+        Me.dgvBooks.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
@@ -183,16 +202,16 @@ Partial Class Form1
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvBooks.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBooks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.book_id, Me.title, Me.author, Me.Column6})
+        Me.dgvBooks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.book_id, Me.title, Me.author, Me.Column6, Me.Column8})
         Me.dgvBooks.Location = New System.Drawing.Point(458, 89)
-        Me.dgvBooks.MinimumSize = New System.Drawing.Size(614, 627)
+        Me.dgvBooks.MinimumSize = New System.Drawing.Size(0, 610)
         Me.dgvBooks.Name = "dgvBooks"
         Me.dgvBooks.ReadOnly = True
         Me.dgvBooks.RowHeadersVisible = False
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvBooks.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBooks.Size = New System.Drawing.Size(880, 627)
+        Me.dgvBooks.Size = New System.Drawing.Size(880, 610)
         Me.dgvBooks.TabIndex = 1
         '
         'book_id
@@ -228,9 +247,17 @@ Partial Class Form1
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
         '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "num_cnt"
+        Me.Column8.HeaderText = "#"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        Me.Column8.Visible = False
+        '
         'AddBookForm
         '
-        Me.AddBookForm.BackColor = System.Drawing.Color.SteelBlue
+        Me.AddBookForm.BackColor = System.Drawing.Color.CornflowerBlue
         Me.AddBookForm.Controls.Add(Me.Label17)
         Me.AddBookForm.Controls.Add(Me.TxtQuantity)
         Me.AddBookForm.Controls.Add(Me.Label3)
@@ -249,7 +276,7 @@ Partial Class Form1
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(27, 172)
+        Me.Label17.Location = New System.Drawing.Point(27, 161)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(35, 13)
         Me.Label17.TabIndex = 8
@@ -258,45 +285,54 @@ Partial Class Form1
         'TxtQuantity
         '
         Me.TxtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtQuantity.Location = New System.Drawing.Point(68, 166)
+        Me.TxtQuantity.Location = New System.Drawing.Point(68, 155)
         Me.TxtQuantity.Name = "TxtQuantity"
         Me.TxtQuantity.Size = New System.Drawing.Size(74, 26)
         Me.TxtQuantity.TabIndex = 7
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(173, 27)
+        Me.Label3.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label3.Location = New System.Drawing.Point(3, 16)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 20)
+        Me.Label3.Size = New System.Drawing.Size(434, 37)
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "ADD BOOK"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnCancel
         '
         Me.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnCancel.Location = New System.Drawing.Point(340, 195)
+        Me.BtnCancel.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
+        Me.BtnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnCancel.Location = New System.Drawing.Point(346, 195)
         Me.BtnCancel.Name = "BtnCancel"
-        Me.BtnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.BtnCancel.Size = New System.Drawing.Size(75, 28)
         Me.BtnCancel.TabIndex = 5
         Me.BtnCancel.Text = "CANCEL"
+        Me.BtnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancel.UseVisualStyleBackColor = True
         '
         'BtnAdd
         '
         Me.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnAdd.Location = New System.Drawing.Point(259, 195)
+        Me.BtnAdd.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_add_21
+        Me.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnAdd.Location = New System.Drawing.Point(247, 195)
         Me.BtnAdd.Name = "BtnAdd"
-        Me.BtnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.BtnAdd.Size = New System.Drawing.Size(93, 28)
         Me.BtnAdd.TabIndex = 4
         Me.BtnAdd.Text = "ADD BOOK"
+        Me.BtnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnAdd.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 134)
+        Me.Label2.Location = New System.Drawing.Point(7, 123)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 3
@@ -305,7 +341,7 @@ Partial Class Form1
         'txtAuthor
         '
         Me.txtAuthor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAuthor.Location = New System.Drawing.Point(69, 128)
+        Me.txtAuthor.Location = New System.Drawing.Point(69, 117)
         Me.txtAuthor.Name = "txtAuthor"
         Me.txtAuthor.Size = New System.Drawing.Size(345, 26)
         Me.txtAuthor.TabIndex = 2
@@ -327,50 +363,39 @@ Partial Class Form1
         Me.txtTitle.Size = New System.Drawing.Size(345, 26)
         Me.txtTitle.TabIndex = 0
         '
-        'BtnDel
-        '
-        Me.BtnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnDel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnDel.Enabled = False
-        Me.BtnDel.Location = New System.Drawing.Point(988, 54)
-        Me.BtnDel.Name = "BtnDel"
-        Me.BtnDel.Size = New System.Drawing.Size(75, 23)
-        Me.BtnDel.TabIndex = 7
-        Me.BtnDel.Text = "DELETE"
-        Me.BtnDel.UseVisualStyleBackColor = True
-        '
-        'BtnEdit
-        '
-        Me.BtnEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnEdit.Enabled = False
-        Me.BtnEdit.Location = New System.Drawing.Point(907, 54)
-        Me.BtnEdit.Name = "BtnEdit"
-        Me.BtnEdit.Size = New System.Drawing.Size(75, 23)
-        Me.BtnEdit.TabIndex = 8
-        Me.BtnEdit.Text = "EDIT"
-        Me.BtnEdit.UseVisualStyleBackColor = True
-        '
         'EditForm
         '
         Me.EditForm.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.EditForm.BackColor = System.Drawing.Color.SteelBlue
+        Me.EditForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.EditForm.Controls.Add(Me.Label4)
         Me.EditForm.Controls.Add(Me.Label27)
         Me.EditForm.Controls.Add(Me.txtEditQnty)
         Me.EditForm.Controls.Add(Me.Label7)
         Me.EditForm.Controls.Add(Me.txtEditId)
-        Me.EditForm.Controls.Add(Me.Label4)
         Me.EditForm.Controls.Add(Me.BtnCancelEditing)
         Me.EditForm.Controls.Add(Me.BtnUpdate)
         Me.EditForm.Controls.Add(Me.Label5)
         Me.EditForm.Controls.Add(Me.txtEditAuthor)
         Me.EditForm.Controls.Add(Me.Label6)
         Me.EditForm.Controls.Add(Me.txtEditTitle)
-        Me.EditForm.Location = New System.Drawing.Point(610, 89)
+        Me.EditForm.Location = New System.Drawing.Point(619, 89)
         Me.EditForm.Name = "EditForm"
         Me.EditForm.Size = New System.Drawing.Size(612, 0)
         Me.EditForm.TabIndex = 7
         Me.EditForm.TabStop = False
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label4.Location = New System.Drawing.Point(3, 16)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(606, 37)
+        Me.Label4.TabIndex = 17
+        Me.Label4.Text = "EDIT BOOK"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label27
         '
@@ -406,16 +431,6 @@ Partial Class Form1
         Me.txtEditId.Name = "txtEditId"
         Me.txtEditId.Size = New System.Drawing.Size(100, 26)
         Me.txtEditId.TabIndex = 7
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(268, 23)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(104, 20)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "EDIT BOOK"
         '
         'BtnCancelEditing
         '
@@ -499,7 +514,8 @@ Partial Class Form1
         '
         'BorrowForm
         '
-        Me.BorrowForm.BackColor = System.Drawing.Color.SteelBlue
+        Me.BorrowForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BorrowForm.Controls.Add(Me.Label9)
         Me.BorrowForm.Controls.Add(Me.Label16)
         Me.BorrowForm.Controls.Add(Me.DtpDateReturn)
         Me.BorrowForm.Controls.Add(Me.Label15)
@@ -509,7 +525,6 @@ Partial Class Form1
         Me.BorrowForm.Controls.Add(Me.Label12)
         Me.BorrowForm.Controls.Add(Me.Label8)
         Me.BorrowForm.Controls.Add(Me.TxtBorrowBookId)
-        Me.BorrowForm.Controls.Add(Me.Label9)
         Me.BorrowForm.Controls.Add(Me.BtnCancelBorrow)
         Me.BorrowForm.Controls.Add(Me.BtnBorrowSave)
         Me.BorrowForm.Controls.Add(Me.Label10)
@@ -519,9 +534,22 @@ Partial Class Form1
         Me.BorrowForm.Enabled = False
         Me.BorrowForm.Location = New System.Drawing.Point(12, 337)
         Me.BorrowForm.Name = "BorrowForm"
-        Me.BorrowForm.Size = New System.Drawing.Size(440, 380)
+        Me.BorrowForm.Size = New System.Drawing.Size(440, 363)
         Me.BorrowForm.TabIndex = 9
         Me.BorrowForm.TabStop = False
+        '
+        'Label9
+        '
+        Me.Label9.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label9.Location = New System.Drawing.Point(3, 16)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(434, 37)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "BORROW BOOK"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label16
         '
@@ -586,7 +614,7 @@ Partial Class Form1
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(14, 58)
+        Me.Label8.Location = New System.Drawing.Point(14, 65)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(54, 13)
         Me.Label8.TabIndex = 8
@@ -596,39 +624,35 @@ Partial Class Form1
         '
         Me.TxtBorrowBookId.Enabled = False
         Me.TxtBorrowBookId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtBorrowBookId.Location = New System.Drawing.Point(69, 53)
+        Me.TxtBorrowBookId.Location = New System.Drawing.Point(69, 60)
         Me.TxtBorrowBookId.Name = "TxtBorrowBookId"
         Me.TxtBorrowBookId.Size = New System.Drawing.Size(100, 22)
         Me.TxtBorrowBookId.TabIndex = 7
         '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(148, 16)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(143, 20)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "BORROW BOOK"
-        '
         'BtnCancelBorrow
         '
         Me.BtnCancelBorrow.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnCancelBorrow.Location = New System.Drawing.Point(339, 339)
+        Me.BtnCancelBorrow.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
+        Me.BtnCancelBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnCancelBorrow.Location = New System.Drawing.Point(339, 320)
         Me.BtnCancelBorrow.Name = "BtnCancelBorrow"
-        Me.BtnCancelBorrow.Size = New System.Drawing.Size(75, 23)
+        Me.BtnCancelBorrow.Size = New System.Drawing.Size(81, 28)
         Me.BtnCancelBorrow.TabIndex = 5
         Me.BtnCancelBorrow.Text = "CANCEL"
+        Me.BtnCancelBorrow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancelBorrow.UseVisualStyleBackColor = True
         '
         'BtnBorrowSave
         '
         Me.BtnBorrowSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnBorrowSave.Location = New System.Drawing.Point(247, 339)
+        Me.BtnBorrowSave.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_book_shelf_20
+        Me.BtnBorrowSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnBorrowSave.Location = New System.Drawing.Point(247, 320)
         Me.BtnBorrowSave.Name = "BtnBorrowSave"
-        Me.BtnBorrowSave.Size = New System.Drawing.Size(75, 23)
+        Me.BtnBorrowSave.Size = New System.Drawing.Size(81, 28)
         Me.BtnBorrowSave.TabIndex = 4
         Me.BtnBorrowSave.Text = "BORROW"
+        Me.BtnBorrowSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnBorrowSave.UseVisualStyleBackColor = True
         '
         'Label10
@@ -665,40 +689,18 @@ Partial Class Form1
         Me.TxtBorrowBookTitle.Size = New System.Drawing.Size(399, 22)
         Me.TxtBorrowBookTitle.TabIndex = 0
         '
-        'BtnBorrow
+        'TxtSearch
         '
-        Me.BtnBorrow.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnBorrow.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnBorrow.Enabled = False
-        Me.BtnBorrow.Location = New System.Drawing.Point(826, 54)
-        Me.BtnBorrow.Name = "BtnBorrow"
-        Me.BtnBorrow.Size = New System.Drawing.Size(75, 23)
-        Me.BtnBorrow.TabIndex = 11
-        Me.BtnBorrow.Text = "BORROW"
-        Me.BtnBorrow.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(663, 54)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(64, 22)
-        Me.Button2.TabIndex = 13
-        Me.Button2.Text = "SEARCH"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(458, 54)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(199, 22)
-        Me.TextBox1.TabIndex = 12
+        Me.TxtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSearch.Location = New System.Drawing.Point(458, 57)
+        Me.TxtSearch.Name = "TxtSearch"
+        Me.TxtSearch.Size = New System.Drawing.Size(199, 22)
+        Me.TxtSearch.TabIndex = 12
         '
         'ReserveForm
         '
         Me.ReserveForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.ReserveForm.Controls.Add(Me.Label24)
         Me.ReserveForm.Controls.Add(Me.Label18)
         Me.ReserveForm.Controls.Add(Me.DtpPickupDate)
         Me.ReserveForm.Controls.Add(Me.Label19)
@@ -708,7 +710,6 @@ Partial Class Form1
         Me.ReserveForm.Controls.Add(Me.Label22)
         Me.ReserveForm.Controls.Add(Me.Label23)
         Me.ReserveForm.Controls.Add(Me.TxtReserveBookId)
-        Me.ReserveForm.Controls.Add(Me.Label24)
         Me.ReserveForm.Controls.Add(Me.BtnCancelReserve)
         Me.ReserveForm.Controls.Add(Me.BtnSaveReserve)
         Me.ReserveForm.Controls.Add(Me.Label25)
@@ -717,10 +718,23 @@ Partial Class Form1
         Me.ReserveForm.Controls.Add(Me.TxtReserveBookTitle)
         Me.ReserveForm.Location = New System.Drawing.Point(12, 337)
         Me.ReserveForm.Name = "ReserveForm"
-        Me.ReserveForm.Size = New System.Drawing.Size(440, 380)
+        Me.ReserveForm.Size = New System.Drawing.Size(440, 362)
         Me.ReserveForm.TabIndex = 16
         Me.ReserveForm.TabStop = False
         Me.ReserveForm.Visible = False
+        '
+        'Label24
+        '
+        Me.Label24.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label24.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label24.Location = New System.Drawing.Point(3, 16)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(434, 37)
+        Me.Label24.TabIndex = 16
+        Me.Label24.Text = "RESERVE BOOK"
+        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label18
         '
@@ -785,7 +799,7 @@ Partial Class Form1
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(14, 58)
+        Me.Label23.Location = New System.Drawing.Point(14, 65)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(54, 13)
         Me.Label23.TabIndex = 8
@@ -795,39 +809,35 @@ Partial Class Form1
         '
         Me.TxtReserveBookId.Enabled = False
         Me.TxtReserveBookId.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtReserveBookId.Location = New System.Drawing.Point(69, 53)
+        Me.TxtReserveBookId.Location = New System.Drawing.Point(69, 60)
         Me.TxtReserveBookId.Name = "TxtReserveBookId"
         Me.TxtReserveBookId.Size = New System.Drawing.Size(100, 22)
         Me.TxtReserveBookId.TabIndex = 7
         '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(148, 16)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(149, 20)
-        Me.Label24.TabIndex = 6
-        Me.Label24.Text = "RESERVE BOOK"
-        '
         'BtnCancelReserve
         '
         Me.BtnCancelReserve.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnCancelReserve.Location = New System.Drawing.Point(340, 331)
+        Me.BtnCancelReserve.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
+        Me.BtnCancelReserve.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnCancelReserve.Location = New System.Drawing.Point(346, 318)
         Me.BtnCancelReserve.Name = "BtnCancelReserve"
-        Me.BtnCancelReserve.Size = New System.Drawing.Size(75, 23)
+        Me.BtnCancelReserve.Size = New System.Drawing.Size(75, 28)
         Me.BtnCancelReserve.TabIndex = 5
         Me.BtnCancelReserve.Text = "CANCEL"
+        Me.BtnCancelReserve.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnCancelReserve.UseVisualStyleBackColor = True
         '
         'BtnSaveReserve
         '
         Me.BtnSaveReserve.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnSaveReserve.Location = New System.Drawing.Point(248, 331)
+        Me.BtnSaveReserve.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_books_28
+        Me.BtnSaveReserve.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnSaveReserve.Location = New System.Drawing.Point(247, 318)
         Me.BtnSaveReserve.Name = "BtnSaveReserve"
-        Me.BtnSaveReserve.Size = New System.Drawing.Size(75, 23)
+        Me.BtnSaveReserve.Size = New System.Drawing.Size(92, 28)
         Me.BtnSaveReserve.TabIndex = 4
         Me.BtnSaveReserve.Text = "RESERVE"
+        Me.BtnSaveReserve.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnSaveReserve.UseVisualStyleBackColor = True
         '
         'Label25
@@ -850,7 +860,7 @@ Partial Class Form1
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(13, 93)
+        Me.Label26.Location = New System.Drawing.Point(14, 97)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(40, 13)
         Me.Label26.TabIndex = 1
@@ -859,7 +869,7 @@ Partial Class Form1
         'TxtReserveBookTitle
         '
         Me.TxtReserveBookTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtReserveBookTitle.Location = New System.Drawing.Point(16, 110)
+        Me.TxtReserveBookTitle.Location = New System.Drawing.Point(17, 114)
         Me.TxtReserveBookTitle.Name = "TxtReserveBookTitle"
         Me.TxtReserveBookTitle.Size = New System.Drawing.Size(399, 22)
         Me.TxtReserveBookTitle.TabIndex = 0
@@ -869,13 +879,12 @@ Partial Class Form1
         Me.DgvReserve.AllowUserToAddRows = False
         Me.DgvReserve.AllowUserToDeleteRows = False
         Me.DgvReserve.AllowUserToResizeColumns = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue
         Me.DgvReserve.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.DgvReserve.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.DgvReserve.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvReserve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvReserve.BackgroundColor = System.Drawing.Color.LightBlue
+        Me.DgvReserve.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DgvReserve.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
@@ -886,16 +895,16 @@ Partial Class Form1
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvReserve.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvReserve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvReserve.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.Column3, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5})
-        Me.DgvReserve.Location = New System.Drawing.Point(12, 88)
-        Me.DgvReserve.MinimumSize = New System.Drawing.Size(614, 627)
+        Me.DgvReserve.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.Column3, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5, Me.Column7})
+        Me.DgvReserve.Location = New System.Drawing.Point(134, 88)
+        Me.DgvReserve.MinimumSize = New System.Drawing.Size(0, 580)
         Me.DgvReserve.Name = "DgvReserve"
         Me.DgvReserve.ReadOnly = True
         Me.DgvReserve.RowHeadersVisible = False
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvReserve.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DgvReserve.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvReserve.Size = New System.Drawing.Size(1326, 627)
+        Me.DgvReserve.Size = New System.Drawing.Size(1204, 612)
         Me.DgvReserve.TabIndex = 14
         Me.DgvReserve.Visible = False
         '
@@ -955,15 +964,26 @@ Partial Class Form1
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "num_cnt"
+        Me.Column7.HeaderText = "#"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Visible = False
+        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Location = New System.Drawing.Point(1232, 54)
+        Me.Button1.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_management_26
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(1219, 54)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(106, 23)
+        Me.Button1.Size = New System.Drawing.Size(119, 28)
         Me.Button1.TabIndex = 16
         Me.Button1.Text = "VIEW RESERVE"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button3
@@ -971,24 +991,251 @@ Partial Class Form1
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button3.Enabled = False
-        Me.Button3.Location = New System.Drawing.Point(1094, 54)
+        Me.Button3.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_books_28
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(1058, 54)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(132, 23)
+        Me.Button3.Size = New System.Drawing.Size(155, 28)
         Me.Button3.TabIndex = 15
         Me.Button3.Text = "MAKE RESERVATION"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'BtnSearch
+        '
+        Me.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.find2
+        Me.BtnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnSearch.Location = New System.Drawing.Point(663, 54)
+        Me.BtnSearch.Name = "BtnSearch"
+        Me.BtnSearch.Size = New System.Drawing.Size(81, 28)
+        Me.BtnSearch.TabIndex = 13
+        Me.BtnSearch.Text = "SEARCH"
+        Me.BtnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnSearch.UseVisualStyleBackColor = True
+        '
+        'BtnBorrow
+        '
+        Me.BtnBorrow.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnBorrow.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnBorrow.Enabled = False
+        Me.BtnBorrow.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_book_shelf_20
+        Me.BtnBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnBorrow.Location = New System.Drawing.Point(809, 54)
+        Me.BtnBorrow.Name = "BtnBorrow"
+        Me.BtnBorrow.Size = New System.Drawing.Size(81, 28)
+        Me.BtnBorrow.TabIndex = 11
+        Me.BtnBorrow.Text = "BORROW"
+        Me.BtnBorrow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnBorrow.UseVisualStyleBackColor = True
+        '
+        'BtnEdit
+        '
+        Me.BtnEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnEdit.Enabled = False
+        Me.BtnEdit.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_edit_text_file_21
+        Me.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnEdit.Location = New System.Drawing.Point(896, 54)
+        Me.BtnEdit.Name = "BtnEdit"
+        Me.BtnEdit.Size = New System.Drawing.Size(75, 28)
+        Me.BtnEdit.TabIndex = 8
+        Me.BtnEdit.Text = "EDIT"
+        Me.BtnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnEdit.UseVisualStyleBackColor = True
+        '
+        'BtnDel
+        '
+        Me.BtnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnDel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDel.Enabled = False
+        Me.BtnDel.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_delete_211
+        Me.BtnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnDel.Location = New System.Drawing.Point(977, 54)
+        Me.BtnDel.Name = "BtnDel"
+        Me.BtnDel.Size = New System.Drawing.Size(75, 28)
+        Me.BtnDel.TabIndex = 7
+        Me.BtnDel.Text = "DELETE"
+        Me.BtnDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnDel.UseVisualStyleBackColor = True
+        '
+        'clearSearch
+        '
+        Me.clearSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_x_10
+        Me.clearSearch.Location = New System.Drawing.Point(635, 60)
+        Me.clearSearch.Name = "clearSearch"
+        Me.clearSearch.Size = New System.Drawing.Size(20, 16)
+        Me.clearSearch.TabIndex = 17
+        Me.clearSearch.UseVisualStyleBackColor = True
+        '
+        'BtnCancelReservation
+        '
+        Me.BtnCancelReservation.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnCancelReservation.Enabled = False
+        Me.BtnCancelReservation.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
+        Me.BtnCancelReservation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnCancelReservation.Location = New System.Drawing.Point(10, 248)
+        Me.BtnCancelReservation.Name = "BtnCancelReservation"
+        Me.BtnCancelReservation.Size = New System.Drawing.Size(97, 34)
+        Me.BtnCancelReservation.TabIndex = 18
+        Me.BtnCancelReservation.Text = "CANCEL"
+        Me.BtnCancelReservation.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnCancelReservation.UseVisualStyleBackColor = True
+        '
+        'BtnFulfilled
+        '
+        Me.BtnFulfilled.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnFulfilled.Enabled = False
+        Me.BtnFulfilled.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnFulfilled.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_check_30__1_
+        Me.BtnFulfilled.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnFulfilled.Location = New System.Drawing.Point(10, 209)
+        Me.BtnFulfilled.Name = "BtnFulfilled"
+        Me.BtnFulfilled.Size = New System.Drawing.Size(97, 34)
+        Me.BtnFulfilled.TabIndex = 19
+        Me.BtnFulfilled.Text = "Fulfilled"
+        Me.BtnFulfilled.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnFulfilled.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Panel1.Controls.Add(Me.Label29)
+        Me.Panel1.Controls.Add(Me.Label28)
+        Me.Panel1.Controls.Add(Me.BtnViewFulfilled)
+        Me.Panel1.Controls.Add(Me.BtnViewCancelled)
+        Me.Panel1.Controls.Add(Me.BtnViewReserved)
+        Me.Panel1.Controls.Add(Me.BtnFulfilled)
+        Me.Panel1.Controls.Add(Me.BtnCancelReservation)
+        Me.Panel1.Location = New System.Drawing.Point(12, 89)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(118, 611)
+        Me.Panel1.TabIndex = 20
+        Me.Panel1.Visible = False
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(13, 185)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(47, 13)
+        Me.Label29.TabIndex = 24
+        Me.Label29.Text = "ACTION"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(14, 16)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(35, 13)
+        Me.Label28.TabIndex = 23
+        Me.Label28.Text = "VIEW"
+        '
+        'BtnViewFulfilled
+        '
+        Me.BtnViewFulfilled.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewFulfilled.Location = New System.Drawing.Point(10, 77)
+        Me.BtnViewFulfilled.Name = "BtnViewFulfilled"
+        Me.BtnViewFulfilled.Size = New System.Drawing.Size(97, 34)
+        Me.BtnViewFulfilled.TabIndex = 22
+        Me.BtnViewFulfilled.Text = "FULFILLED"
+        Me.BtnViewFulfilled.UseVisualStyleBackColor = True
+        '
+        'BtnViewCancelled
+        '
+        Me.BtnViewCancelled.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewCancelled.Location = New System.Drawing.Point(10, 115)
+        Me.BtnViewCancelled.Name = "BtnViewCancelled"
+        Me.BtnViewCancelled.Size = New System.Drawing.Size(97, 34)
+        Me.BtnViewCancelled.TabIndex = 21
+        Me.BtnViewCancelled.Text = "CANCELLED"
+        Me.BtnViewCancelled.UseVisualStyleBackColor = True
+        '
+        'BtnViewReserved
+        '
+        Me.BtnViewReserved.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewReserved.Location = New System.Drawing.Point(10, 40)
+        Me.BtnViewReserved.Name = "BtnViewReserved"
+        Me.BtnViewReserved.Size = New System.Drawing.Size(97, 34)
+        Me.BtnViewReserved.TabIndex = 20
+        Me.BtnViewReserved.Text = "RESERVED"
+        Me.BtnViewReserved.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.SandyBrown
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.BtnConfirmFulfill)
+        Me.Panel2.Controls.Add(Me.BtnCancelFulfill)
+        Me.Panel2.Controls.Add(Me.DtpReservedToReturnDate)
+        Me.Panel2.Controls.Add(Me.Label30)
+        Me.Panel2.Location = New System.Drawing.Point(134, 88)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(334, 112)
+        Me.Panel2.TabIndex = 21
+        Me.Panel2.Visible = False
+        '
+        'Label30
+        '
+        Me.Label30.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(0, 0)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(332, 23)
+        Me.Label30.TabIndex = 0
+        Me.Label30.Text = "ENTER DATE TO RETURN"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'DtpReservedToReturnDate
+        '
+        Me.DtpReservedToReturnDate.Location = New System.Drawing.Point(77, 34)
+        Me.DtpReservedToReturnDate.Name = "DtpReservedToReturnDate"
+        Me.DtpReservedToReturnDate.Size = New System.Drawing.Size(200, 20)
+        Me.DtpReservedToReturnDate.TabIndex = 1
+        '
+        'BtnCancelFulfill
+        '
+        Me.BtnCancelFulfill.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnCancelFulfill.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
+        Me.BtnCancelFulfill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnCancelFulfill.Location = New System.Drawing.Point(240, 70)
+        Me.BtnCancelFulfill.Name = "BtnCancelFulfill"
+        Me.BtnCancelFulfill.Size = New System.Drawing.Size(77, 32)
+        Me.BtnCancelFulfill.TabIndex = 19
+        Me.BtnCancelFulfill.Text = "CANCEL"
+        Me.BtnCancelFulfill.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnCancelFulfill.UseVisualStyleBackColor = True
+        '
+        'BtnConfirmFulfill
+        '
+        Me.BtnConfirmFulfill.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnConfirmFulfill.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnConfirmFulfill.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_check_30__1_
+        Me.BtnConfirmFulfill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnConfirmFulfill.Location = New System.Drawing.Point(157, 70)
+        Me.BtnConfirmFulfill.Name = "BtnConfirmFulfill"
+        Me.BtnConfirmFulfill.Size = New System.Drawing.Size(77, 32)
+        Me.BtnConfirmFulfill.TabIndex = 25
+        Me.BtnConfirmFulfill.Text = "Done"
+        Me.BtnConfirmFulfill.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnConfirmFulfill.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
+        Me.BackColor = System.Drawing.Color.AliceBlue
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.clearSearch)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.DgvReserve)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.BtnSearch)
+        Me.Controls.Add(Me.TxtSearch)
         Me.Controls.Add(Me.BtnBorrow)
         Me.Controls.Add(Me.LblTime)
         Me.Controls.Add(Me.LblDate)
@@ -1004,7 +1251,7 @@ Partial Class Form1
         Me.MinimumSize = New System.Drawing.Size(852, 500)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Library Management System"
+        Me.Text = "LIBRARY MANAGEMENT SYSTEM"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.dgvBooks, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1017,6 +1264,9 @@ Partial Class Form1
         Me.ReserveForm.ResumeLayout(False)
         Me.ReserveForm.PerformLayout()
         CType(Me.DgvReserve, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1039,7 +1289,6 @@ Partial Class Form1
     Friend WithEvents BtnDel As Button
     Friend WithEvents BtnEdit As Button
     Friend WithEvents EditForm As GroupBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents BtnCancelEditing As Button
     Friend WithEvents BtnUpdate As Button
     Friend WithEvents Label5 As Label
@@ -1056,7 +1305,6 @@ Partial Class Form1
     Friend WithEvents Label12 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents TxtBorrowBookId As TextBox
-    Friend WithEvents Label9 As Label
     Friend WithEvents BtnCancelBorrow As Button
     Friend WithEvents BtnBorrowSave As Button
     Friend WithEvents Label10 As Label
@@ -1069,8 +1317,8 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Public WithEvents BorrowForm As GroupBox
     Friend WithEvents BtnBorrow As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents BtnSearch As Button
+    Friend WithEvents TxtSearch As TextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents TxtQuantity As TextBox
     Public WithEvents ReserveForm As GroupBox
@@ -1083,7 +1331,6 @@ Partial Class Form1
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents TxtReserveBookId As TextBox
-    Friend WithEvents Label24 As Label
     Friend WithEvents BtnCancelReserve As Button
     Friend WithEvents BtnSaveReserve As Button
     Friend WithEvents Label25 As Label
@@ -1091,6 +1338,17 @@ Partial Class Form1
     Friend WithEvents Label26 As Label
     Friend WithEvents TxtReserveBookTitle As TextBox
     Friend WithEvents DgvReserve As DataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label27 As Label
+    Friend WithEvents txtEditQnty As TextBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents book_id As DataGridViewTextBoxColumn
+    Friend WithEvents title As DataGridViewTextBoxColumn
+    Friend WithEvents author As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -1099,12 +1357,20 @@ Partial Class Form1
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Label27 As Label
-    Friend WithEvents txtEditQnty As TextBox
-    Friend WithEvents book_id As DataGridViewTextBoxColumn
-    Friend WithEvents title As DataGridViewTextBoxColumn
-    Friend WithEvents author As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Label9 As Label
+    Friend WithEvents clearSearch As Button
+    Friend WithEvents BtnCancelReservation As Button
+    Friend WithEvents BtnFulfilled As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents BtnViewFulfilled As Button
+    Friend WithEvents BtnViewCancelled As Button
+    Friend WithEvents BtnViewReserved As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents BtnConfirmFulfill As Button
+    Friend WithEvents BtnCancelFulfill As Button
+    Friend WithEvents DtpReservedToReturnDate As DateTimePicker
+    Friend WithEvents Label30 As Label
 End Class

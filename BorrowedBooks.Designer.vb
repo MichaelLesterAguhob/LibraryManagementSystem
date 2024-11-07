@@ -22,8 +22,10 @@ Partial Class BorrowedBooks
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DgvBorrow = New System.Windows.Forms.DataGridView()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,10 +36,8 @@ Partial Class BorrowedBooks
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BtnReturned = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.BtnViewReturnedBorrow = New System.Windows.Forms.Button()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TxtSearch = New System.Windows.Forms.TextBox()
         Me.DgvReturned = New System.Windows.Forms.DataGridView()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,7 +48,13 @@ Partial Class BorrowedBooks
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.num_cnt = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.clearSearch = New System.Windows.Forms.Button()
+        Me.BtnViewReturnedBorrow = New System.Windows.Forms.Button()
+        Me.BtnSearch = New System.Windows.Forms.Button()
+        Me.BtnReturned = New System.Windows.Forms.Button()
         CType(Me.DgvBorrow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgvReturned, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -59,22 +65,24 @@ Partial Class BorrowedBooks
         Me.DgvBorrow.AllowUserToDeleteRows = False
         Me.DgvBorrow.AllowUserToOrderColumns = True
         Me.DgvBorrow.AllowUserToResizeColumns = False
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvBorrow.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvBorrow.BackgroundColor = System.Drawing.Color.LightSkyBlue
+        Me.DgvBorrow.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DgvBorrow.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvBorrow.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvBorrow.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DgvBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvBorrow.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column1, Me.Column10, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column9})
+        Me.DgvBorrow.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column1, Me.Column10, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column9, Me.Column12})
         Me.DgvBorrow.Location = New System.Drawing.Point(12, 109)
         Me.DgvBorrow.Name = "DgvBorrow"
         Me.DgvBorrow.ReadOnly = True
@@ -146,44 +154,21 @@ Partial Class BorrowedBooks
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
         '
-        'BtnReturned
+        'Column12
         '
-        Me.BtnReturned.Enabled = False
-        Me.BtnReturned.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnReturned.Location = New System.Drawing.Point(1008, 69)
-        Me.BtnReturned.Name = "BtnReturned"
-        Me.BtnReturned.Size = New System.Drawing.Size(162, 34)
-        Me.BtnReturned.TabIndex = 1
-        Me.BtnReturned.Text = "Set as Returned"
-        Me.BtnReturned.UseVisualStyleBackColor = True
+        Me.Column12.DataPropertyName = "num_cnt"
+        Me.Column12.HeaderText = "#"
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        Me.Column12.Visible = False
         '
-        'TextBox1
+        'TxtSearch
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(12, 73)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(374, 26)
-        Me.TextBox1.TabIndex = 2
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(392, 73)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(90, 26)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "SEARCH"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'BtnViewReturnedBorrow
-        '
-        Me.BtnViewReturnedBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnViewReturnedBorrow.Location = New System.Drawing.Point(1176, 69)
-        Me.BtnViewReturnedBorrow.Name = "BtnViewReturnedBorrow"
-        Me.BtnViewReturnedBorrow.Size = New System.Drawing.Size(162, 34)
-        Me.BtnViewReturnedBorrow.TabIndex = 5
-        Me.BtnViewReturnedBorrow.Text = "View Returned"
-        Me.BtnViewReturnedBorrow.UseVisualStyleBackColor = True
+        Me.TxtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSearch.Location = New System.Drawing.Point(12, 73)
+        Me.TxtSearch.Name = "TxtSearch"
+        Me.TxtSearch.Size = New System.Drawing.Size(374, 26)
+        Me.TxtSearch.TabIndex = 2
         '
         'DgvReturned
         '
@@ -191,22 +176,24 @@ Partial Class BorrowedBooks
         Me.DgvReturned.AllowUserToDeleteRows = False
         Me.DgvReturned.AllowUserToOrderColumns = True
         Me.DgvReturned.AllowUserToResizeColumns = False
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.DgvReturned.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DgvReturned.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvReturned.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvReturned.BackgroundColor = System.Drawing.Color.LightBlue
+        Me.DgvReturned.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DgvReturned.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvReturned.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvReturned.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.DgvReturned.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvReturned.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column11, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.DgvReturned.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column11, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.num_cnt})
         Me.DgvReturned.Location = New System.Drawing.Point(12, 109)
         Me.DgvReturned.Name = "DgvReturned"
         Me.DgvReturned.ReadOnly = True
@@ -279,11 +266,20 @@ Partial Class BorrowedBooks
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
+        'num_cnt
+        '
+        Me.num_cnt.DataPropertyName = "num_cnt"
+        Me.num_cnt.HeaderText = "#"
+        Me.num_cnt.Name = "num_cnt"
+        Me.num_cnt.ReadOnly = True
+        Me.num_cnt.Visible = False
+        '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label1.BackColor = System.Drawing.Color.RoyalBlue
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.Control
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(1350, 48)
@@ -291,21 +287,86 @@ Partial Class BorrowedBooks
         Me.Label1.Text = "Borrowed Books"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Maroon
+        Me.Label2.Location = New System.Drawing.Point(646, 79)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(117, 20)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "Not Returned"
+        '
+        'clearSearch
+        '
+        Me.clearSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_x_10
+        Me.clearSearch.Location = New System.Drawing.Point(365, 76)
+        Me.clearSearch.Name = "clearSearch"
+        Me.clearSearch.Size = New System.Drawing.Size(18, 20)
+        Me.clearSearch.TabIndex = 9
+        Me.clearSearch.UseVisualStyleBackColor = True
+        '
+        'BtnViewReturnedBorrow
+        '
+        Me.BtnViewReturnedBorrow.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewReturnedBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnViewReturnedBorrow.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_eye_44
+        Me.BtnViewReturnedBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnViewReturnedBorrow.Location = New System.Drawing.Point(1206, 69)
+        Me.BtnViewReturnedBorrow.Name = "BtnViewReturnedBorrow"
+        Me.BtnViewReturnedBorrow.Size = New System.Drawing.Size(132, 34)
+        Me.BtnViewReturnedBorrow.TabIndex = 5
+        Me.BtnViewReturnedBorrow.Text = "View Returned"
+        Me.BtnViewReturnedBorrow.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnViewReturnedBorrow.UseVisualStyleBackColor = True
+        '
+        'BtnSearch
+        '
+        Me.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.find4
+        Me.BtnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnSearch.Location = New System.Drawing.Point(392, 73)
+        Me.BtnSearch.Name = "BtnSearch"
+        Me.BtnSearch.Size = New System.Drawing.Size(90, 26)
+        Me.BtnSearch.TabIndex = 4
+        Me.BtnSearch.Text = "SEARCH"
+        Me.BtnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnSearch.UseVisualStyleBackColor = True
+        '
+        'BtnReturned
+        '
+        Me.BtnReturned.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnReturned.Enabled = False
+        Me.BtnReturned.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnReturned.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_check_30__1_
+        Me.BtnReturned.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnReturned.Location = New System.Drawing.Point(1050, 69)
+        Me.BtnReturned.Name = "BtnReturned"
+        Me.BtnReturned.Size = New System.Drawing.Size(144, 34)
+        Me.BtnReturned.TabIndex = 1
+        Me.BtnReturned.Text = "Set as Returned"
+        Me.BtnReturned.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnReturned.UseVisualStyleBackColor = True
+        '
         'BorrowedBooks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.clearSearch)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DgvReturned)
         Me.Controls.Add(Me.BtnViewReturnedBorrow)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.BtnSearch)
+        Me.Controls.Add(Me.TxtSearch)
         Me.Controls.Add(Me.BtnReturned)
         Me.Controls.Add(Me.DgvBorrow)
         Me.Name = "BorrowedBooks"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "BorrowedBooks"
+        Me.Text = "BORROWED BOOKS"
         CType(Me.DgvBorrow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgvReturned, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -315,8 +376,8 @@ Partial Class BorrowedBooks
 
     Friend WithEvents DgvBorrow As DataGridView
     Friend WithEvents BtnReturned As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button2 As Button
+    Friend WithEvents TxtSearch As TextBox
+    Friend WithEvents BtnSearch As Button
     Friend WithEvents BtnViewReturnedBorrow As Button
     Friend WithEvents DgvReturned As DataGridView
     Friend WithEvents Label1 As Label
@@ -329,6 +390,7 @@ Partial Class BorrowedBooks
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
@@ -338,4 +400,7 @@ Partial Class BorrowedBooks
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents num_cnt As DataGridViewTextBoxColumn
+    Friend WithEvents Label2 As Label
+    Friend WithEvents clearSearch As Button
 End Class

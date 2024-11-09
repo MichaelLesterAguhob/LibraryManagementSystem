@@ -20,7 +20,7 @@ Module connection
             con.ConnectionString = "server=" & server & ";user=" & username & ";password=" & password & ";database=" & database
             con.Open()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Connection Problem Occurred.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message & Environment.NewLine & "Please open XAMPP and start the APACHE AND MYSQL", "Connection Problem Occurred.", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

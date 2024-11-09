@@ -4,7 +4,6 @@ C:\Users\amike\source\repos\LibraryManagementSystem\bin\Debug\LibraryManagementS
 C:\Users\amike\source\repos\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.xml
 C:\Users\amike\source\repos\LibraryManagementSystem\bin\Debug\MySql.Data.dll
 C:\Users\amike\source\repos\LibraryManagementSystem\bin\Debug\MySql.Data.xml
-C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.vbproj.AssemblyReference.cache
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Form1.resources
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Resources.resources
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.vbproj.GenerateResource.cache
@@ -14,3 +13,4 @@ C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementS
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.xml
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
 C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.BorrowedBooks.resources
+C:\Users\amike\source\repos\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.vbproj.AssemblyReference.cache

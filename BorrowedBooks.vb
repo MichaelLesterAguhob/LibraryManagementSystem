@@ -328,4 +328,9 @@ Public Class BorrowedBooks
     Private Sub clearSearch_Click(sender As Object, e As EventArgs) Handles clearSearch.Click
         TxtSearch.Clear()
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        LoadBorrowBooks()
+        LoadReturnedBooks()
+    End Sub
 End Class

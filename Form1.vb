@@ -210,6 +210,9 @@ Public Class Form1
     End Sub
 
     Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
+        BtnBorrow.Enabled = False
+        Button3.Enabled = False
+        BtnDel.Enabled = False
         EditForm.Height = 327
         txtEditId.Text = selectedBookId
         txtEditTitle.Text = selectedBookTitle
@@ -221,6 +224,10 @@ Public Class Form1
         EditForm.Height = 0
         txtEditTitle.Text = ""
         txtEditAuthor.Text = ""
+        BtnEdit.Enabled = True
+        BtnBorrow.Enabled = True
+        Button3.Enabled = True
+        BtnDel.Enabled = True
     End Sub
 
 
@@ -304,6 +311,9 @@ Public Class Form1
 
     ''==============================================================================================================
     Private Sub BtnBorrow_Click(sender As Object, e As EventArgs) Handles BtnBorrow.Click
+        BtnEdit.Enabled = False
+        Button3.Enabled = False
+        BtnDel.Enabled = False
         BorrowForm.Enabled = True
         TxtBorrowBookId.Text = selectedBookId
         TxtBorrowBookTitle.Text = selectedBookTitle
@@ -311,7 +321,15 @@ Public Class Form1
     End Sub
 
     Private Sub BtnCancelBorrow_Click(sender As Object, e As EventArgs) Handles BtnCancelBorrow.Click
+        TxtBorrowBookId.Clear()
+        TxtBorrowBookTitle.Clear()
+        TxtName.Clear()
+        TxtMobile.Clear()
         BorrowForm.Enabled = False
+        BtnEdit.Enabled = True
+        BtnBorrow.Enabled = True
+        Button3.Enabled = True
+        BtnDel.Enabled = True
     End Sub
 
 
@@ -405,31 +423,28 @@ Public Class Form1
             BtnSearch.Enabled = False
             LoadReservedBooks("reserved")
         Else
+            Panel2.Visible = False
             reserveView = False
             DgvReserve.Visible = False
             Panel1.Visible = False
             Button1.Text = "VIEW RESERVED"
-            BtnDel.Enabled = True
-            BtnEdit.Enabled = True
             EditForm.Height = 0
-            Button3.Enabled = True
-            BtnBorrow.Enabled = True
             BtnSearch.Enabled = True
         End If
     End Sub
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        BtnCancelBorrow.PerformClick()
+        BtnBorrow.Enabled = False
+        BtnDel.Enabled = False
+        BtnEdit.Enabled = False
+        EditForm.Height = 0
 
         TxtReserveBookId.Text = selectedBookId
         TxtReserveBookTitle.Text = selectedBookTitle
-        BtnDel.Enabled = False
-            BtnEdit.Enabled = False
-            BtnBorrow.Enabled = False
-            EditForm.Height = 0
-            ReserveForm.Visible = True
-            TxtReserveName.Focus()
-
+        ReserveForm.Visible = True
+        TxtReserveName.Focus()
     End Sub
 
     Private Sub BtnCancelReserve_Click(sender As Object, e As EventArgs) Handles BtnCancelReserve.Click
@@ -798,5 +813,10 @@ Public Class Form1
         Finally
             con.Close()
         End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        LoadBooks()
+        LoadReservedBooks("reserved")
     End Sub
 End Class

@@ -125,6 +125,7 @@ Public Class Form1
         End Try
     End Sub
 
+
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
         If txtTitle.Text = "" Or txtAuthor.Text = "" Or Not IsNumeric(TxtQuantity.Text) Then
             MessageBox.Show("Fill in the blanks | Quantity must be greater than or equal 1", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -421,6 +422,7 @@ Public Class Form1
             Button3.Enabled = False
             BtnBorrow.Enabled = False
             BtnSearch.Enabled = False
+            ReserveForm.Visible = False
             LoadReservedBooks("reserved")
         Else
             Panel2.Visible = False

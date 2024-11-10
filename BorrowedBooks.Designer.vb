@@ -22,10 +22,10 @@ Partial Class BorrowedBooks
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DgvBorrow = New System.Windows.Forms.DataGridView()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -66,22 +66,22 @@ Partial Class BorrowedBooks
         Me.DgvBorrow.AllowUserToDeleteRows = False
         Me.DgvBorrow.AllowUserToOrderColumns = True
         Me.DgvBorrow.AllowUserToResizeColumns = False
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum
+        Me.DgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DgvBorrow.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvBorrow.BackgroundColor = System.Drawing.Color.LightSteelBlue
+        Me.DgvBorrow.BackgroundColor = System.Drawing.Color.Pink
         Me.DgvBorrow.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvBorrow.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvBorrow.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DgvBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvBorrow.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column1, Me.Column10, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column9, Me.Column12})
         Me.DgvBorrow.Location = New System.Drawing.Point(12, 109)
@@ -177,22 +177,22 @@ Partial Class BorrowedBooks
         Me.DgvReturned.AllowUserToDeleteRows = False
         Me.DgvReturned.AllowUserToOrderColumns = True
         Me.DgvReturned.AllowUserToResizeColumns = False
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.DgvReturned.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Plum
+        Me.DgvReturned.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DgvReturned.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvReturned.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvReturned.BackgroundColor = System.Drawing.Color.LightSteelBlue
+        Me.DgvReturned.BackgroundColor = System.Drawing.Color.Pink
         Me.DgvReturned.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvReturned.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvReturned.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DgvReturned.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvReturned.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column11, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.num_cnt})
         Me.DgvReturned.Location = New System.Drawing.Point(12, 109)
@@ -277,10 +277,10 @@ Partial Class BorrowedBooks
         '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label1.BackColor = System.Drawing.Color.Plum
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label1.ForeColor = System.Drawing.Color.Purple
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(1350, 48)
@@ -312,6 +312,7 @@ Partial Class BorrowedBooks
         '
         Me.BtnViewReturnedBorrow.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnViewReturnedBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnViewReturnedBorrow.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnViewReturnedBorrow.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_eye_44
         Me.BtnViewReturnedBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnViewReturnedBorrow.Location = New System.Drawing.Point(1206, 69)
@@ -326,6 +327,7 @@ Partial Class BorrowedBooks
         '
         Me.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSearch.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.find4
         Me.BtnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnSearch.Location = New System.Drawing.Point(392, 73)
@@ -341,6 +343,7 @@ Partial Class BorrowedBooks
         Me.BtnReturned.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnReturned.Enabled = False
         Me.BtnReturned.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnReturned.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnReturned.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_check_30__1_
         Me.BtnReturned.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnReturned.Location = New System.Drawing.Point(1050, 69)
@@ -355,6 +358,7 @@ Partial Class BorrowedBooks
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.ForeColor = System.Drawing.Color.DarkMagenta
         Me.Button2.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_update_done_21__1_
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button2.Location = New System.Drawing.Point(947, 69)

@@ -146,7 +146,7 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.AutoSize = False
-        Me.MenuStrip1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Plum
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.BooksToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -158,6 +158,7 @@ Partial Class Form1
         'MenuToolStripMenuItem
         '
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
+        Me.MenuToolStripMenuItem.ForeColor = System.Drawing.Color.Purple
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
         Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(62, 38)
         Me.MenuToolStripMenuItem.Text = "Menu"
@@ -166,12 +167,13 @@ Partial Class Form1
         '
         Me.ExitToolStripMenuItem.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_logout_20
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(104, 26)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'BooksToolStripMenuItem
         '
         Me.BooksToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewBorrowedBooksToolStripMenuItem})
+        Me.BooksToolStripMenuItem.ForeColor = System.Drawing.Color.Purple
         Me.BooksToolStripMenuItem.Name = "BooksToolStripMenuItem"
         Me.BooksToolStripMenuItem.Size = New System.Drawing.Size(64, 38)
         Me.BooksToolStripMenuItem.Text = "Books"
@@ -188,13 +190,13 @@ Partial Class Form1
         Me.dgvBooks.AllowUserToAddRows = False
         Me.dgvBooks.AllowUserToDeleteRows = False
         Me.dgvBooks.AllowUserToResizeColumns = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum
         Me.dgvBooks.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvBooks.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvBooks.BackgroundColor = System.Drawing.Color.LightSteelBlue
+        Me.dgvBooks.BackgroundColor = System.Drawing.Color.Pink
         Me.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
@@ -259,7 +261,7 @@ Partial Class Form1
         '
         'AddBookForm
         '
-        Me.AddBookForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.AddBookForm.BackColor = System.Drawing.Color.Pink
         Me.AddBookForm.Controls.Add(Me.Label17)
         Me.AddBookForm.Controls.Add(Me.TxtQuantity)
         Me.AddBookForm.Controls.Add(Me.Label3)
@@ -294,10 +296,10 @@ Partial Class Form1
         '
         'Label3
         '
-        Me.Label3.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label3.BackColor = System.Drawing.Color.Violet
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label3.ForeColor = System.Drawing.Color.Purple
         Me.Label3.Location = New System.Drawing.Point(3, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(434, 37)
@@ -368,7 +370,7 @@ Partial Class Form1
         'EditForm
         '
         Me.EditForm.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.EditForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.EditForm.BackColor = System.Drawing.Color.LightPink
         Me.EditForm.Controls.Add(Me.Label4)
         Me.EditForm.Controls.Add(Me.Label27)
         Me.EditForm.Controls.Add(Me.txtEditQnty)
@@ -388,10 +390,10 @@ Partial Class Form1
         '
         'Label4
         '
-        Me.Label4.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label4.BackColor = System.Drawing.Color.Plum
         Me.Label4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label4.ForeColor = System.Drawing.Color.Purple
         Me.Label4.Location = New System.Drawing.Point(3, 16)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(606, 37)
@@ -437,6 +439,7 @@ Partial Class Form1
         'BtnCancelEditing
         '
         Me.BtnCancelEditing.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnCancelEditing.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnCancelEditing.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
         Me.BtnCancelEditing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCancelEditing.Location = New System.Drawing.Point(470, 255)
@@ -450,6 +453,7 @@ Partial Class Form1
         'BtnUpdate
         '
         Me.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnUpdate.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnUpdate.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_update_28
         Me.BtnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnUpdate.Location = New System.Drawing.Point(371, 255)
@@ -502,7 +506,7 @@ Partial Class Form1
         '
         Me.LblDate.AutoSize = True
         Me.LblDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDate.ForeColor = System.Drawing.Color.Navy
+        Me.LblDate.ForeColor = System.Drawing.Color.Purple
         Me.LblDate.Location = New System.Drawing.Point(12, 52)
         Me.LblDate.Name = "LblDate"
         Me.LblDate.Size = New System.Drawing.Size(48, 20)
@@ -513,7 +517,7 @@ Partial Class Form1
         '
         Me.LblTime.AutoSize = True
         Me.LblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTime.ForeColor = System.Drawing.Color.Navy
+        Me.LblTime.ForeColor = System.Drawing.Color.Purple
         Me.LblTime.Location = New System.Drawing.Point(11, 86)
         Me.LblTime.Name = "LblTime"
         Me.LblTime.Size = New System.Drawing.Size(47, 20)
@@ -522,7 +526,7 @@ Partial Class Form1
         '
         'BorrowForm
         '
-        Me.BorrowForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BorrowForm.BackColor = System.Drawing.Color.Pink
         Me.BorrowForm.Controls.Add(Me.Label9)
         Me.BorrowForm.Controls.Add(Me.Label16)
         Me.BorrowForm.Controls.Add(Me.DtpDateReturn)
@@ -548,7 +552,7 @@ Partial Class Form1
         '
         'Label9
         '
-        Me.Label9.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label9.BackColor = System.Drawing.Color.Violet
         Me.Label9.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.Control
@@ -699,7 +703,7 @@ Partial Class Form1
         '
         'ReserveForm
         '
-        Me.ReserveForm.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.ReserveForm.BackColor = System.Drawing.Color.Pink
         Me.ReserveForm.Controls.Add(Me.Label24)
         Me.ReserveForm.Controls.Add(Me.Label18)
         Me.ReserveForm.Controls.Add(Me.DtpPickupDate)
@@ -716,19 +720,19 @@ Partial Class Form1
         Me.ReserveForm.Controls.Add(Me.TxtReserveName)
         Me.ReserveForm.Controls.Add(Me.Label26)
         Me.ReserveForm.Controls.Add(Me.TxtReserveBookTitle)
-        Me.ReserveForm.Location = New System.Drawing.Point(12, 357)
+        Me.ReserveForm.Location = New System.Drawing.Point(12, 363)
         Me.ReserveForm.Name = "ReserveForm"
-        Me.ReserveForm.Size = New System.Drawing.Size(440, 342)
+        Me.ReserveForm.Size = New System.Drawing.Size(440, 336)
         Me.ReserveForm.TabIndex = 16
         Me.ReserveForm.TabStop = False
         Me.ReserveForm.Visible = False
         '
         'Label24
         '
-        Me.Label24.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label24.BackColor = System.Drawing.Color.Violet
         Me.Label24.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.SystemColors.Control
+        Me.Label24.ForeColor = System.Drawing.Color.Purple
         Me.Label24.Location = New System.Drawing.Point(3, 16)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(434, 37)
@@ -845,9 +849,9 @@ Partial Class Form1
         Me.Label25.AutoSize = True
         Me.Label25.Location = New System.Drawing.Point(13, 132)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(129, 13)
+        Me.Label25.Size = New System.Drawing.Size(138, 13)
         Me.Label25.TabIndex = 3
-        Me.Label25.Text = "BORROWER'S DETAILS"
+        Me.Label25.Text = "RESERVATION DETAILS :"
         '
         'TxtReserveName
         '
@@ -887,13 +891,13 @@ Partial Class Form1
         Me.DgvReserve.AllowUserToAddRows = False
         Me.DgvReserve.AllowUserToDeleteRows = False
         Me.DgvReserve.AllowUserToResizeColumns = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Plum
         Me.DgvReserve.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DgvReserve.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DgvReserve.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DgvReserve.BackgroundColor = System.Drawing.Color.LightSteelBlue
+        Me.DgvReserve.BackgroundColor = System.Drawing.Color.Pink
         Me.DgvReserve.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
@@ -905,14 +909,14 @@ Partial Class Form1
         Me.DgvReserve.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DgvReserve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvReserve.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.Column2, Me.Column3, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5, Me.Column7})
-        Me.DgvReserve.Location = New System.Drawing.Point(123, 115)
+        Me.DgvReserve.Location = New System.Drawing.Point(123, 117)
         Me.DgvReserve.Name = "DgvReserve"
         Me.DgvReserve.ReadOnly = True
         Me.DgvReserve.RowHeadersVisible = False
         DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DgvReserve.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DgvReserve.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvReserve.Size = New System.Drawing.Size(1215, 609)
+        Me.DgvReserve.Size = New System.Drawing.Size(1215, 607)
         Me.DgvReserve.TabIndex = 14
         Me.DgvReserve.Visible = False
         '
@@ -986,7 +990,7 @@ Partial Class Form1
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Panel1.BackColor = System.Drawing.Color.Pink
         Me.Panel1.Controls.Add(Me.Label29)
         Me.Panel1.Controls.Add(Me.Label28)
         Me.Panel1.Controls.Add(Me.BtnViewFulfilled)
@@ -994,15 +998,16 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.BtnViewReserved)
         Me.Panel1.Controls.Add(Me.BtnFulfilled)
         Me.Panel1.Controls.Add(Me.BtnCancelReservation)
-        Me.Panel1.Location = New System.Drawing.Point(10, 115)
+        Me.Panel1.Location = New System.Drawing.Point(10, 117)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(118, 609)
+        Me.Panel1.Size = New System.Drawing.Size(118, 607)
         Me.Panel1.TabIndex = 20
         Me.Panel1.Visible = False
         '
         'Label29
         '
         Me.Label29.AutoSize = True
+        Me.Label29.ForeColor = System.Drawing.Color.Purple
         Me.Label29.Location = New System.Drawing.Point(13, 204)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(47, 13)
@@ -1012,6 +1017,7 @@ Partial Class Form1
         'Label28
         '
         Me.Label28.AutoSize = True
+        Me.Label28.ForeColor = System.Drawing.Color.Purple
         Me.Label28.Location = New System.Drawing.Point(14, 35)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(35, 13)
@@ -1021,6 +1027,7 @@ Partial Class Form1
         'BtnViewFulfilled
         '
         Me.BtnViewFulfilled.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewFulfilled.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnViewFulfilled.Location = New System.Drawing.Point(10, 96)
         Me.BtnViewFulfilled.Name = "BtnViewFulfilled"
         Me.BtnViewFulfilled.Size = New System.Drawing.Size(97, 34)
@@ -1031,6 +1038,7 @@ Partial Class Form1
         'BtnViewCancelled
         '
         Me.BtnViewCancelled.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewCancelled.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnViewCancelled.Location = New System.Drawing.Point(10, 134)
         Me.BtnViewCancelled.Name = "BtnViewCancelled"
         Me.BtnViewCancelled.Size = New System.Drawing.Size(97, 34)
@@ -1041,6 +1049,7 @@ Partial Class Form1
         'BtnViewReserved
         '
         Me.BtnViewReserved.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnViewReserved.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnViewReserved.Location = New System.Drawing.Point(10, 59)
         Me.BtnViewReserved.Name = "BtnViewReserved"
         Me.BtnViewReserved.Size = New System.Drawing.Size(97, 34)
@@ -1053,6 +1062,7 @@ Partial Class Form1
         Me.BtnFulfilled.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnFulfilled.Enabled = False
         Me.BtnFulfilled.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnFulfilled.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnFulfilled.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_check_30__1_
         Me.BtnFulfilled.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnFulfilled.Location = New System.Drawing.Point(10, 228)
@@ -1067,6 +1077,7 @@ Partial Class Form1
         '
         Me.BtnCancelReservation.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnCancelReservation.Enabled = False
+        Me.BtnCancelReservation.ForeColor = System.Drawing.Color.DarkMagenta
         Me.BtnCancelReservation.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_close_window_19
         Me.BtnCancelReservation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnCancelReservation.Location = New System.Drawing.Point(10, 267)
@@ -1079,7 +1090,7 @@ Partial Class Form1
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.SandyBrown
+        Me.Panel2.BackColor = System.Drawing.Color.Plum
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.BtnConfirmFulfill)
         Me.Panel2.Controls.Add(Me.BtnCancelFulfill)
@@ -1129,6 +1140,7 @@ Partial Class Form1
         '
         Me.Label30.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.ForeColor = System.Drawing.Color.Purple
         Me.Label30.Location = New System.Drawing.Point(0, 0)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(285, 23)
@@ -1140,6 +1152,7 @@ Partial Class Form1
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.ForeColor = System.Drawing.Color.Purple
         Me.Button2.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_update_done_21__1_
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button2.Location = New System.Drawing.Point(715, 52)
@@ -1163,6 +1176,7 @@ Partial Class Form1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.ForeColor = System.Drawing.Color.Purple
         Me.Button1.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_management_26
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(1219, 51)
@@ -1178,6 +1192,7 @@ Partial Class Form1
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button3.Enabled = False
+        Me.Button3.ForeColor = System.Drawing.Color.Purple
         Me.Button3.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_books_28
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button3.Location = New System.Drawing.Point(1058, 51)
@@ -1192,6 +1207,7 @@ Partial Class Form1
         '
         Me.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSearch.ForeColor = System.Drawing.Color.Purple
         Me.BtnSearch.Image = Global.LibraryManagementSystem.My.Resources.Resources.find2
         Me.BtnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnSearch.Location = New System.Drawing.Point(663, 85)
@@ -1207,6 +1223,7 @@ Partial Class Form1
         Me.BtnBorrow.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnBorrow.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnBorrow.Enabled = False
+        Me.BtnBorrow.ForeColor = System.Drawing.Color.Purple
         Me.BtnBorrow.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_book_shelf_20
         Me.BtnBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnBorrow.Location = New System.Drawing.Point(809, 51)
@@ -1222,6 +1239,7 @@ Partial Class Form1
         Me.BtnEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnEdit.Enabled = False
+        Me.BtnEdit.ForeColor = System.Drawing.Color.Purple
         Me.BtnEdit.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_edit_text_file_21
         Me.BtnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnEdit.Location = New System.Drawing.Point(896, 51)
@@ -1237,6 +1255,7 @@ Partial Class Form1
         Me.BtnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnDel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnDel.Enabled = False
+        Me.BtnDel.ForeColor = System.Drawing.Color.Purple
         Me.BtnDel.Image = Global.LibraryManagementSystem.My.Resources.Resources.icons8_delete_211
         Me.BtnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnDel.Location = New System.Drawing.Point(977, 51)
